@@ -1,0 +1,36 @@
+// Variables
+@import "./variables";
+
+* {
+  font-family: "Montserrat", sans-serif;
+}
+
+.MuiFormLabel-root.Mui-focused {
+  color: #02a39b !important;
+}
+
+.MuiInput-underline:after {
+  border-color: #02a39b !important;
+}
+
+.custom-button {
+  text-transform: none !important;
+  background-color: #01645f !important;
+  transition: all 0.3s !important;
+  outline: none !important;
+  font-family: Montserrat, sans-serif !important;
+  color: white !important;
+  &:hover {
+    background-color: #02a39b !important;
+  }
+}
+
+.loader {
+  color: white !important;
+  width: 23px !important;
+  height: 23px !important;
+  margin: 3px 0;
+}
+
+// log in
+@import "./login/login";

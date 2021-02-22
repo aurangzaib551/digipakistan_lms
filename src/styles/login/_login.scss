@@ -1,0 +1,13 @@
+.login {
+  .form {
+    width: 350px;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .login {
+    .form {
+      width: 100%;
+    }
+  }
+}
