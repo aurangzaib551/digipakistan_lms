@@ -1,2 +1,3 @@
-# digipakistan_lms
- This is a lms of DigiPakistan company.
+# DigiPakistan_LMS
+
+This is a lms of DigiPakistan company.
