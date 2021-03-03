@@ -112,7 +112,6 @@ const LogIn = (props) => {
 };
 
 const mapStateToProps = (state) => {
-  console.log(state);
   return {
     msg: state.auth.msg,
     isLoggedIn: state.firebase.auth.isEmpty,

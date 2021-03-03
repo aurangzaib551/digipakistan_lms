@@ -3,6 +3,22 @@ import { Switch, Route } from "react-router-dom";
 import Loader from "./loader/loader";
 const LogIn = lazy(() => import("./pages/login"));
 const Dashboard = lazy(() => import("./pages/dashboard"));
+const Info = lazy(() => import("./pages/info"));
+const Quizizz = lazy(() => import("./pages/quizizz"));
+const Assignments = lazy(() => import("./pages/assignments"));
+const Lectures = lazy(() => import("./pages/lectures"));
+const certifiedInformationSecurityManager = lazy(() =>
+  import("./components/lectures/certifiedInformationSecurityManager")
+);
+const CompTIASecurityPlus = lazy(() =>
+  import("./components/lectures/compTIASecurityPlus")
+);
+const CertifiedHackingForensicInvestigator = lazy(() =>
+  import("./components/lectures/certifiedHackingForensicInvestigator")
+);
+const CisspCyberSecurityProfessional = lazy(() =>
+  import("./components/lectures/cisspCyberSecurityProfessional")
+);
 
 const App = () => {
   return (
@@ -10,6 +26,284 @@ const App = () => {
       <Switch>
         <Route path="/" exact component={LogIn} />
         <Route path="/dashboard" component={Dashboard} />
+        <Route path="/info" component={Info} />
+        <Route path="/quizizz" component={Quizizz} />
+        <Route path="/assignments" component={Assignments} />
+        <Route
+          path="/lmsDashboard/myCourses/frontEndLMS"
+          exact
+          component={certifiedInformationSecurityManager}
+        />
+        <Route
+          path="/lmsDashboard/myCourses/dataScienceLMS"
+          exact
+          component={certifiedInformationSecurityManager}
+        />
+        <Route
+          path="/lmsDashboard/myCourses/aspDotNetLMS"
+          exact
+          component={certifiedInformationSecurityManager}
+        />
+        <Route
+          path="/lmsDashboard/myCourses/phpLaravelLMS"
+          exact
+          component={certifiedInformationSecurityManager}
+        />
+        <Route
+          path="/lmsDashboard/myCourses/mernStackLMS"
+          exact
+          component={certifiedInformationSecurityManager}
+        />
+        <Route
+          path="/lmsDashboard/myCourses/sqlServerSpecialistLMS"
+          exact
+          component={certifiedInformationSecurityManager}
+        />
+        <Route
+          path="/lmsDashboard/myCourses/oracleDatabaseLMS"
+          exact
+          component={certifiedInformationSecurityManager}
+        />
+        <Route
+          path="/lmsDashboard/myCourses/androidAppLMS"
+          exact
+          component={certifiedInformationSecurityManager}
+        />
+        <Route
+          path="/lmsDashboard/myCourses/iosAppLMS"
+          exact
+          component={certifiedInformationSecurityManager}
+        />
+        <Route
+          path="/lmsDashboard/myCourses/xamarinAppLMS"
+          exact
+          component={certifiedInformationSecurityManager}
+        />
+        <Route
+          path="/lmsDashboard/myCourses/reactNativeLMS"
+          exact
+          component={certifiedInformationSecurityManager}
+        />
+        <Route
+          path="/lmsDashboard/myCourses/gameDevelopmentLMS"
+          exact
+          component={certifiedInformationSecurityManager}
+        />
+        <Route
+          path="/lmsDashboard/myCourses/ccnaNetworkingLMS"
+          exact
+          component={certifiedInformationSecurityManager}
+        />
+        <Route
+          path="/lmsDashboard/myCourses/graphicDesignLMS"
+          exact
+          component={certifiedInformationSecurityManager}
+        />
+        <Route
+          path="/lmsDashboard/myCourses/videoEditingLMS"
+          exact
+          component={certifiedInformationSecurityManager}
+        />
+        <Route
+          path="/lmsDashboard/myCourses/seoLMS"
+          exact
+          component={certifiedInformationSecurityManager}
+        />
+        <Route
+          path="/lmsDashboard/myCourses/socialMediaLMS"
+          exact
+          component={certifiedInformationSecurityManager}
+        />
+        <Route
+          path="/lmsDashboard/myCourses/amazonFbaBusinessLMS"
+          exact
+          component={certifiedInformationSecurityManager}
+        />
+        <Route
+          path="/lmsDashboard/myCourses/projectManagementProfessionalLMS"
+          exact
+          component={certifiedInformationSecurityManager}
+        />
+        <Route
+          path="/lmsDashboard/myCourses/digitalForensicCyberSecurityLMS"
+          exact
+          component={certifiedInformationSecurityManager}
+        />
+        <Route
+          path="/lmsDashboard/myCourses/penetrationTestingCyberSecurityLMS"
+          exact
+          component={certifiedInformationSecurityManager}
+        />
+        <Route
+          path="/lmsDashboard/myCourses/artificialIntelligenceLMS"
+          exact
+          component={certifiedInformationSecurityManager}
+        />
+        <Route
+          path="/lmsDashboard/myCourses/cloudComputingLMS"
+          exact
+          component={certifiedInformationSecurityManager}
+        />
+        <Route
+          path="/lmsDashboard/myCourses/fullStackWebDevelopmentLMS"
+          exact
+          component={certifiedInformationSecurityManager}
+        />
+        <Route
+          path="/lmsDashboard/myCourses/iotLMS"
+          exact
+          component={certifiedInformationSecurityManager}
+        />
+        <Route
+          path="/lmsDashboard/myCourses/blockChainLMS"
+          exact
+          component={certifiedInformationSecurityManager}
+        />
+        <Route
+          path="/lmsDashboard/myCourses/comptiaItFundamentalsLMS"
+          exact
+          component={certifiedInformationSecurityManager}
+        />
+        <Route
+          path="/lmsDashboard/myCourses/kotlinMobileAppsDevelopmentLMS"
+          exact
+          component={certifiedInformationSecurityManager}
+        />
+        <Route
+          path="/lmsDashboard/myCourses/comptiaSecurityPlusLMS"
+          exact
+          component={CompTIASecurityPlus}
+        />
+        <Route
+          path="/lmsDashboard/myCourses/certifiedEthicalHackingLMS"
+          exact
+          component={certifiedInformationSecurityManager}
+        />
+        <Route
+          path="/lmsDashboard/myCourses/certifiedHackingForensicInvestigatorLMS"
+          exact
+          component={CertifiedHackingForensicInvestigator}
+        />
+        <Route
+          path="/lmsDashboard/myCourses/penetrationTestingSecurityAnalystLMS"
+          exact
+          component={certifiedInformationSecurityManager}
+        />
+        <Route
+          path="/lmsDashboard/myCourses/certifiedInformationSystemAuditorLMS"
+          exact
+          component={certifiedInformationSecurityManager}
+        />
+        <Route
+          path="/lmsDashboard/myCourses/certifiedInformationSecurityManagerLMS"
+          exact
+          component={certifiedInformationSecurityManager}
+        />
+        <Route
+          path="/lmsDashboard/myCourses/awsPractitionerLMS"
+          exact
+          component={certifiedInformationSecurityManager}
+        />
+        <Route
+          path="/lmsDashboard/myCourses/awsSolutionArchitectLMS"
+          exact
+          component={certifiedInformationSecurityManager}
+        />
+        <Route
+          path="/lmsDashboard/myCourses/awsSysOpsAdministratorLMS"
+          exact
+          component={certifiedInformationSecurityManager}
+        />
+        <Route
+          path="/lmsDashboard/myCourses/awsDeveloperAssociateLMS"
+          exact
+          component={certifiedInformationSecurityManager}
+        />
+        <Route
+          path="/lmsDashboard/myCourses/microsoftAzureCloudFundamentalsLMS"
+          exact
+          component={certifiedInformationSecurityManager}
+        />
+        <Route
+          path="/lmsDashboard/myCourses/microsoftCloudAdministratorLMS"
+          exact
+          component={certifiedInformationSecurityManager}
+        />
+        <Route
+          path="/lmsDashboard/myCourses/googleCloudEngineerLMS"
+          exact
+          component={certifiedInformationSecurityManager}
+        />
+        <Route
+          path="/lmsDashboard/myCourses/pythonForEveryoneLMS"
+          exact
+          component={certifiedInformationSecurityManager}
+        />
+        <Route
+          path="/lmsDashboard/myCourses/machineLearningAndAILMS"
+          exact
+          component={certifiedInformationSecurityManager}
+        />
+        <Route
+          path="/lmsDashboard/myCourses/bigDataAndHeadoopEcosystemLMS"
+          exact
+          component={certifiedInformationSecurityManager}
+        />
+        <Route
+          path="/lmsDashboard/myCourses/quickBooksERPLMS"
+          exact
+          component={certifiedInformationSecurityManager}
+        />
+        <Route
+          path="/lmsDashboard/myCourses/sapERPLMS"
+          exact
+          component={certifiedInformationSecurityManager}
+        />
+        <Route
+          path="/lmsDashboard/myCourses/digitalMarketingLMS"
+          exact
+          component={certifiedInformationSecurityManager}
+        />
+        <Route
+          path=" /lmsDashboard/myCourses/uiUXDesignLMS"
+          exact
+          component={certifiedInformationSecurityManager}
+        />
+        <Route
+          path="/lmsDashboard/myCourses/interiorDesignLMS"
+          exact
+          component={certifiedInformationSecurityManager}
+        />
+        <Route
+          path="/lmsDashboard/myCourses/3dMayaMaxAnimationLMS"
+          exact
+          component={certifiedInformationSecurityManager}
+        />
+        <Route
+          path="/lmsDashboard/myCourses/autocadLMS"
+          exact
+          component={certifiedInformationSecurityManager}
+        />
+        <Route
+          path="/lmsDashboard/myCourses/microsoftOffice365LMS"
+          exact
+          component={certifiedInformationSecurityManager}
+        />
+        <Route
+          path="/lmsDashboard/myCourses/enterpreneurshipLMS"
+          exact
+          component={certifiedInformationSecurityManager}
+        />
+        <Route
+          path="/lmsDashboard/myCourses/cisspCyberSecurityProfessionalLMS"
+          exact
+          component={CisspCyberSecurityProfessional}
+        />
+        <Route
+          path="/lmsDashboard/myCourses/certifiedInformationSecurityManagerLMS"
+          component={certifiedInformationSecurityManager}
+        />
+        <Route path="/lectures" component={Lectures} />
       </Switch>
     </Suspense>
   );

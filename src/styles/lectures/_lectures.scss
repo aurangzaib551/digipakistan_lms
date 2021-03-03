@@ -1,0 +1,59 @@
+.lectures {
+  height: 500px;
+
+  .topics {
+    width: 250px;
+    overflow-y: auto;
+  }
+
+  .video {
+    width: 100%;
+  }
+}
+
+.courses {
+  .course {
+    width: 400px;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .lectures {
+    height: 400px;
+  }
+
+  .courses {
+    .course {
+      width: 300px;
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .lectures {
+    height: 300px;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .lectures {
+    height: auto;
+
+    .topics {
+      width: 100%;
+    }
+
+    .video {
+      margin-top: 15px;
+      height: 300px;
+    }
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .courses {
+    .course {
+      width: 100%;
+    }
+  }
+}
