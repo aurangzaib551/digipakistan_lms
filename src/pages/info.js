@@ -10,7 +10,7 @@ const Info = ({ profile, uid, signOut }) => {
   if (profile.lms) return <Redirect to="/dashboard" />;
   // Checking user is logged in or not
   if (!uid) return <Redirect to="/" />;
-  console.log(profile);
+
   return profile.fullName ? (
     <div className="container my-5">
       <h1 className="text-center mx-3 display-4 fw-bold">

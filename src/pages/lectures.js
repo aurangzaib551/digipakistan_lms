@@ -62,7 +62,7 @@ const Lectures = ({ profile, uid }) => {
                 </span>
               )}
             </Paper>
-            {course[1]["Second Course Title"] && (
+            {course[1] && (
               <Paper className="p-3 course text-center mt-4 border mx-md-3">
                 <h3 className="mb-0 fw-bold">
                   {course[1]["Second Course Title"]}
@@ -100,7 +100,7 @@ const Lectures = ({ profile, uid }) => {
                 )}
               </Paper>
             )}
-            {course[2]["Third Course Title"] && (
+            {course[2] && (
               <Paper className="p-3 course text-center mt-4 border mx-md-3">
                 <h3 className="mb-0 fw-bold">
                   {course[2]["Third Course Title"]}
