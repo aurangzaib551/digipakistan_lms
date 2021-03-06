@@ -25,6 +25,8 @@ const store = createStore(
   )
 );
 
+window.onbeforeunload = fbConfig.auth().signOut();
+
 store.firebaseAuthIsReady.then(() => {
   ReactDOM.render(
     <Provider store={store}>

@@ -1,15 +1,29 @@
 import React from "react";
 import Button from "@material-ui/core/Button";
 import { connect } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 import { signOut } from "../store/actions/authActions";
 import Loader from "../loader/loader";
+import fbConfig from "../config/fbConfig";
 
 const Info = ({ profile, uid, signOut }) => {
+  // Object Destructuring
+  const { push } = useHistory();
+
   // Checking LMS Status
   if (profile.lms) return <Redirect to="/dashboard" />;
   // Checking user is logged in or not
   if (!uid) return <Redirect to="/" />;
+
+  // Checking user is logged in or not
+  if (profile.admin)
+    return fbConfig
+      .auth()
+      .signOut()
+      .then(() => {
+        push("/");
+        window.location.reload();
+      });
 
   return profile.fullName ? (
     <div className="container my-5">
