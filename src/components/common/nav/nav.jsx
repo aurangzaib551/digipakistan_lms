@@ -3,6 +3,7 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
 import Button from "@material-ui/core/Button";
+import Avatar from "@material-ui/core/Avatar";
 import { connect } from "react-redux";
 import { signOut } from "../../../store/actions/authActions";
 import Drawer from "@material-ui/core/Drawer";
@@ -12,10 +13,14 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import { useHistory } from "react-router-dom";
+import Menu from "@material-ui/core/Menu";
+import MenuItem from "@material-ui/core/MenuItem";
 
-const Nav = ({ signOut }) => {
+const Nav = ({ signOut, profile }) => {
   // State
   const [open, setOpen] = useState(false);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [anchorElExplore, setAnchorElExplore] = useState(null);
 
   const onCloseDrawer = () => {
     setOpen((prevState) => !prevState);
@@ -34,7 +39,23 @@ const Nav = ({ signOut }) => {
   const go = (link) => {
     setTimeout(() => {
       push(link);
-    }, 400);
+    }, 300);
+  };
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const handleClickExplore = (event) => {
+    setAnchorElExplore(event.currentTarget);
+  };
+
+  const handleCloseExplore = () => {
+    setAnchorElExplore(null);
   };
   return (
     <nav>
@@ -48,9 +69,105 @@ const Nav = ({ signOut }) => {
             >
               <i className="fas fa-bars text-white"></i>
             </IconButton>
-            <h3 className="mb-0 fw-bold">Learning Management System</h3>
+            <h3 className="mb-0 fw-bold">LMS</h3>
+
+            <Button
+              aria-haspopup="true"
+              onClick={handleClickExplore}
+              variant="outlined"
+              color="inherit"
+              className="fw-bold ms-3"
+            >
+              Explore
+            </Button>
+            <Menu
+              id="simple-menu"
+              anchorEl={anchorElExplore}
+              keepMounted
+              open={Boolean(anchorElExplore)}
+              className="mt-5"
+              onClose={handleCloseExplore}
+            >
+              <MenuItem
+                className="w-100 d-block"
+                onClick={() => {
+                  handleClose();
+                  window.location.href =
+                    "https://digipakistan.org/fastTrackTechnicalProgram";
+                }}
+              >
+                Fast Track Technical Program
+              </MenuItem>
+              <MenuItem
+                className="w-100 d-block"
+                onClick={() => {
+                  handleClose();
+                  window.location.href =
+                    "https://digipakistan.org/fastTrackNonTechnicalProgram";
+                }}
+              >
+                Fast Track Non-Technical Program
+              </MenuItem>
+              <MenuItem
+                className="w-100 d-block"
+                onClick={() => {
+                  handleClose();
+                  window.location.href =
+                    "https://digipakistan.org/associateCertificationProgram";
+                }}
+              >
+                Associate Certification Program
+              </MenuItem>
+            </Menu>
           </div>
           <Button
+            aria-haspopup="true"
+            onClick={handleClick}
+            className="d-flex align-items-center text-white"
+          >
+            <Avatar className="fw-bold">{profile.initials}</Avatar>
+            <p className="mb-0 ms-2">{profile.fullName}</p>
+          </Button>
+          <Menu
+            id="simple-menu"
+            anchorEl={anchorEl}
+            keepMounted
+            open={Boolean(anchorEl)}
+            className="mt-5 profile-menu"
+            onClose={handleClose}
+          >
+            <MenuItem
+              className="profile-menu"
+              onClick={() => {
+                handleClose();
+                go("/lectures");
+              }}
+            >
+              My Courses
+            </MenuItem>
+            <MenuItem
+              className="profile-menu"
+              onClick={() => {
+                handleClose();
+                go("/profile");
+              }}
+            >
+              Profile
+            </MenuItem>
+            <MenuItem className="profile-menu" onClick={handleClose}>
+              Help Center
+            </MenuItem>
+            <MenuItem
+              className="profile-menu"
+              onClick={() => {
+                handleClose();
+                signOut();
+              }}
+            >
+              Logout
+            </MenuItem>
+          </Menu>
+          {/* <Button
             onClick={() => {
               setTimeout(() => {
                 signOut();
@@ -61,7 +178,7 @@ const Nav = ({ signOut }) => {
             color="inherit"
           >
             Log Out
-          </Button>
+          </Button> */}
         </Toolbar>
       </AppBar>
       <Drawer anchor="left" open={open} onClose={onCloseDrawer}>
@@ -160,4 +277,10 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(Nav);
+const mapStateToProps = (state) => {
+  return {
+    profile: state.firebase.profile,
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Nav);

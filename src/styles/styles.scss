@@ -25,6 +25,10 @@
   }
 }
 
+.profile-menu {
+  width: 260px !important;
+}
+
 .loader {
   color: white !important;
   width: 23px !important;
@@ -37,3 +41,9 @@
 
 // lectures
 @import "./lectures/lectures";
+
+// Profile
+@import "./profile/profile";
+
+// Dashboard
+@import "./dashboard/dashboard";
