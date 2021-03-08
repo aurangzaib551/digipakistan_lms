@@ -25,10 +25,10 @@ const Lectures = ({ profile, uid }) => {
   return profile.fullName ? (
     <>
       <Nav />
-      <div className="container courses mt-5 d-flex flex-column flex-md-row align-items-center align-items-md-start flex-wrap flex-lg-nowrap justify-content-between">
+      <div className="container courses mt-5">
         {course[0] && (
           <>
-            <Paper className="p-3 text-center course mt-4 border mx-md-3">
+            <Paper className="p-3 w-100 course mt-4 border mx-md-3">
               <h3 className="mb-0 fw-bold">
                 {course[0]["First Course Title"]}
               </h3>
@@ -63,7 +63,7 @@ const Lectures = ({ profile, uid }) => {
               )}
             </Paper>
             {course[1] && (
-              <Paper className="p-3 course text-center mt-4 border mx-md-3">
+              <Paper className="p-3 w-100 course mt-4 border mx-md-3">
                 <h3 className="mb-0 fw-bold">
                   {course[1]["Second Course Title"]}
                 </h3>
@@ -101,7 +101,7 @@ const Lectures = ({ profile, uid }) => {
               </Paper>
             )}
             {course[2] && (
-              <Paper className="p-3 course text-center mt-4 border mx-md-3">
+              <Paper className="p-3 w-100 course mt-4 border mx-md-3">
                 <h3 className="mb-0 fw-bold">
                   {course[2]["Third Course Title"]}
                 </h3>
