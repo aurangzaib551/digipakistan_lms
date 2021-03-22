@@ -15,12 +15,14 @@ import ListItemText from "@material-ui/core/ListItemText";
 import { useHistory } from "react-router-dom";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
+import { useMediaQuery } from "react-responsive";
 
 const Nav = ({ signOut, profile }) => {
   // State
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
   const [anchorEl, setAnchorEl] = useState(null);
   const [anchorElExplore, setAnchorElExplore] = useState(null);
+  const [no, setno] = useState(1);
 
   const onCloseDrawer = () => {
     setOpen((prevState) => !prevState);
@@ -57,9 +59,25 @@ const Nav = ({ signOut, profile }) => {
   const handleCloseExplore = () => {
     setAnchorElExplore(null);
   };
+
+  const isLaptop = useMediaQuery({
+    query: "(max-width: 992px)",
+  });
+
+  if (isLaptop === true && no === 1) {
+    setno(2);
+    setOpen(false);
+  } else if (isLaptop === false && no === 2) {
+    setno(1);
+    setOpen(true);
+  }
+
   return (
     <nav>
-      <AppBar position="relative" style={{ backgroundColor: "#02a39b" }}>
+      <AppBar
+        position="relative"
+        style={{ backgroundColor: "#02a39b", marginLeft: open ? 300 : 0 }}
+      >
         <Toolbar className="d-flex justify-content-between">
           <div className="d-flex align-items-center">
             <IconButton
@@ -120,53 +138,55 @@ const Nav = ({ signOut, profile }) => {
               </MenuItem>
             </Menu>
           </div>
-          <Button
-            aria-haspopup="true"
-            onClick={handleClick}
-            className="d-flex align-items-center text-white"
-          >
-            <Avatar className="fw-bold">{profile.initials}</Avatar>
-            <p className="mb-0 ms-2">{profile.fullName}</p>
-          </Button>
-          <Menu
-            id="simple-menu"
-            anchorEl={anchorEl}
-            keepMounted
-            open={Boolean(anchorEl)}
-            className="mt-5 profile-menu"
-            onClose={handleClose}
-          >
-            <MenuItem
-              className="profile-menu"
-              onClick={() => {
-                handleClose();
-                go("/lectures");
-              }}
+          <div style={{ marginRight: open ? 300 : 0 }}>
+            <Button
+              aria-haspopup="true"
+              onClick={handleClick}
+              className="d-flex align-items-center text-white"
             >
-              My Courses
-            </MenuItem>
-            <MenuItem
-              className="profile-menu"
-              onClick={() => {
-                handleClose();
-                go("/profile");
-              }}
+              <Avatar className="fw-bold">{profile.initials}</Avatar>
+              <p className="mb-0 ms-2">{profile.fullName}</p>
+            </Button>
+            <Menu
+              id="simple-menu"
+              anchorEl={anchorEl}
+              keepMounted
+              open={Boolean(anchorEl)}
+              className="mt-5 profile-menu"
+              onClose={handleClose}
             >
-              Profile
-            </MenuItem>
-            <MenuItem className="profile-menu" onClick={handleClose}>
-              Help Center
-            </MenuItem>
-            <MenuItem
-              className="profile-menu"
-              onClick={() => {
-                handleClose();
-                signOut();
-              }}
-            >
-              Logout
-            </MenuItem>
-          </Menu>
+              <MenuItem
+                className="profile-menu"
+                onClick={() => {
+                  handleClose();
+                  go("/lectures");
+                }}
+              >
+                My Courses
+              </MenuItem>
+              <MenuItem
+                className="profile-menu"
+                onClick={() => {
+                  handleClose();
+                  go("/profile");
+                }}
+              >
+                Profile
+              </MenuItem>
+              <MenuItem className="profile-menu" onClick={handleClose}>
+                Help Center
+              </MenuItem>
+              <MenuItem
+                className="profile-menu"
+                onClick={() => {
+                  handleClose();
+                  signOut();
+                }}
+              >
+                Logout
+              </MenuItem>
+            </Menu>
+          </div>
           {/* <Button
             onClick={() => {
               setTimeout(() => {
@@ -181,7 +201,12 @@ const Nav = ({ signOut, profile }) => {
           </Button> */}
         </Toolbar>
       </AppBar>
-      <Drawer anchor="left" open={open} onClose={onCloseDrawer}>
+      <Drawer
+        anchor="left"
+        variant="persistent"
+        open={open}
+        onClose={onCloseDrawer}
+      >
         <div style={{ width: 300 }}>
           <div className="d-flex justify-content-end">
             <IconButton onClick={handleDrawer} className="outline m-3">

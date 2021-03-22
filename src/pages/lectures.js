@@ -5,11 +5,16 @@ import Loader from "../loader/loader";
 import Nav from "../components/common/nav/nav";
 import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
+import { useMediaQuery } from "react-responsive";
 
 const Lectures = ({ profile, uid }) => {
   //   Object Destructuring
   const { push } = useHistory();
   const { course } = profile;
+
+  const isLaptop = useMediaQuery({
+    query: "(min-width: 992px)",
+  });
 
   // Checking LMS Status
   if (!profile.lms) return <Redirect to="/info" />;
@@ -25,7 +30,13 @@ const Lectures = ({ profile, uid }) => {
   return profile.fullName ? (
     <>
       <Nav />
-      <div className="container courses mt-5">
+      <div
+        className="container courses mt-5"
+        style={{
+          marginLeft: isLaptop ? 300 : 0,
+          width: isLaptop ? "65vw" : "100%",
+        }}
+      >
         {course[0] && (
           <>
             <Paper className="p-3 w-100 course mt-4 border mx-md-3">

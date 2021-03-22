@@ -5,6 +5,10 @@
   font-family: "Montserrat", sans-serif;
 }
 
+body {
+  overflow-x: hidden;
+}
+
 .MuiFormLabel-root.Mui-focused {
   color: #02a39b !important;
 }
