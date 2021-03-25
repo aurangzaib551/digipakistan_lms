@@ -3,8 +3,12 @@ import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import Loader from "../loader/loader";
 import Nav from "../components/common/nav/nav";
+import { useMediaQuery } from "react-responsive";
 
 const Assignments = ({ profile, uid }) => {
+  const isLaptop = useMediaQuery({
+    query: "(max-width: 992px)",
+  });
   // Checking LMS Status
   if (!profile.lms) return <Redirect to="/info" />;
   // Checking user is logged in or not
@@ -12,7 +16,11 @@ const Assignments = ({ profile, uid }) => {
   return profile ? (
     <>
       <Nav />
-      <div className="container my-5">
+      <div className="container my-5" style={{
+        position: "relative",
+        left: isLaptop ? 0 : 150,
+        width: isLaptop ? "100%" : "71vw",
+      }}>
         <h1 className="text-center fw-bold">
           Your assignments will be uploaded soon
         </h1>

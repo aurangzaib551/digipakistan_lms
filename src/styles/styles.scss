@@ -9,6 +9,14 @@ body {
   overflow-x: hidden;
 }
 
+.bg {
+  // position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: grey;
+  color: white !important;
+}
+
 .MuiFormLabel-root.Mui-focused {
   color: #02a39b !important;
 }
@@ -31,6 +39,7 @@ body {
 
 .profile-menu {
   width: 260px !important;
+  margin-top: 50px;
 }
 
 .loader {
@@ -38,6 +47,12 @@ body {
   width: 23px !important;
   height: 23px !important;
   margin: 3px 0;
+}
+
+@media only screen and (max-width: 576px){
+  .profile-menu{
+    margin-top: 60px;
+  }
 }
 
 // log in

@@ -4,8 +4,13 @@ import { Redirect } from "react-router-dom";
 import Loader from "../loader/loader";
 import Nav from "../components/common/nav/nav";
 import Avatar from "@material-ui/core/Avatar";
+import { useMediaQuery } from "react-responsive";
 
 const Profile = ({ profile, uid }) => {
+  const isLaptop = useMediaQuery({
+    query: "(max-width: 992px)",
+  });
+
   // Checking LMS Status
   if (!profile.lms) return <Redirect to="/info" />;
   // Checking user is logged in or not
@@ -14,11 +19,15 @@ const Profile = ({ profile, uid }) => {
   return profile ? (
     <>
       <Nav />
-      <div className="container profile my-5">
+      <div className="container profile my-5" style={{
+        position: "relative",
+        left: isLaptop ? 0 : 150,
+        width: isLaptop ? "100%" : "71vw",
+      }}>
         <div className="d-flex justify-content-center">
           <Avatar className="avatar">{profile.initials}</Avatar>
         </div>
-        <h1 className="fw-bold">
+        <h1 className="fw-bold mt-3">
           Name:{" "}
           <span className="fw-normal text-capitalize">{profile.fullName}</span>
         </h1>

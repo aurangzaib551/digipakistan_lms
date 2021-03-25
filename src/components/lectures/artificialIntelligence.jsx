@@ -61,7 +61,7 @@ const ArtificialIntelligence = ({ profile, uid }) => {
                               }
                               variant="contained"
                               fullWidth
-                              className="outline mt-2"
+                              className="outline mt-2 custom-button"
                               color="primary"
                             >
                               {lecture.topic}
@@ -103,7 +103,7 @@ const ArtificialIntelligence = ({ profile, uid }) => {
                               setVideo("");
                               setVideo(subLecture.video);
                             }}
-                            className="outline mt-2"
+                            className="outline mt-2 custom-button"
                             color="primary"
                           >
                             {subLecture.subTopic}

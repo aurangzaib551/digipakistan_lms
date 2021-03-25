@@ -62,7 +62,7 @@ const Lectures = ({ profile, uid }) => {
                 <Button
                   onClick={() => go(course[0]["First Course Name"].link)}
                   variant="contained"
-                  className="outline mt-2"
+                  className="outline mt-2 custom-button"
                   color="primary"
                 >
                   Open Portal
@@ -99,7 +99,7 @@ const Lectures = ({ profile, uid }) => {
                   <Button
                     onClick={() => go(course[1]["Second Course Name"].link)}
                     variant="contained"
-                    className="outline mt-2"
+                    className="outline mt-2 custom-button"
                     color="primary"
                   >
                     Open Portal
@@ -137,7 +137,7 @@ const Lectures = ({ profile, uid }) => {
                   <Button
                     onClick={() => go(course[2]["Third Course Name"].link)}
                     variant="contained"
-                    className="outline mt-2"
+                    className="outline mt-2 custom-button"
                     color="primary"
                   >
                     Open Portal
