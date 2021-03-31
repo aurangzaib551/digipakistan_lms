@@ -9,6 +9,26 @@ body {
   overflow-x: hidden;
 }
 
+.link {
+  color: black;
+  text-decoration: none;
+
+  &:hover {
+    color: #02a39b;
+  }
+}
+
+.notifications {
+  max-height: 600px !important;
+  .title {
+    width: 300px;
+  }
+}
+
+.mt-lms {
+  margin-top: 90px !important;
+}
+
 .bg {
   // position: absolute;
   height: 100%;
@@ -49,8 +69,8 @@ body {
   margin: 3px 0;
 }
 
-@media only screen and (max-width: 576px){
-  .profile-menu{
+@media only screen and (max-width: 576px) {
+  .profile-menu {
     margin-top: 60px;
   }
 }

@@ -5,6 +5,7 @@ import Loader from "../../loader/loader";
 import Nav from "../../components/common/nav/nav";
 import Button from "@material-ui/core/Button";
 import firebase from "../../config/fbConfig";
+import { useMediaQuery } from "react-responsive";
 
 const CertifiedHackingForensicInvestigator = ({ profile, uid }) => {
   // State
@@ -33,6 +34,10 @@ const CertifiedHackingForensicInvestigator = ({ profile, uid }) => {
       });
   }, []);
 
+  const isLaptop = useMediaQuery({
+    query: "(max-width: 992px)",
+  });
+
   // Checking LMS Status
   if (!profile.lms) return <Redirect to="/info" />;
   // Checking user is logged in or not
@@ -40,7 +45,11 @@ const CertifiedHackingForensicInvestigator = ({ profile, uid }) => {
   return profile ? (
     <>
       <Nav />
-      <div className="container lectures my-5">
+      <div className="container lectures my-5" style={{
+        position: "relative",
+        left: isLaptop ? 0 : 150,
+        width: isLaptop ? "100%" : "71vw",
+      }}>
         {msg && <h1 className="fw-bold text-center">{msg + "..."}</h1>}
         <div className="d-flex flex-column flex-sm-row h-100">
           {!subTopic && (

@@ -5,6 +5,7 @@ import Loader from "../../loader/loader";
 import Nav from "../../components/common/nav/nav";
 import Button from "@material-ui/core/Button";
 import firebase from "../../config/fbConfig";
+import { useMediaQuery } from "react-responsive";
 
 const CompTIASecurityPlus = ({ profile, uid }) => {
   // State
@@ -13,6 +14,10 @@ const CompTIASecurityPlus = ({ profile, uid }) => {
   const [subLectures, setSubLectures] = useState([]);
   const [video, setVideo] = useState("");
   const [msg, setMsg] = useState("");
+
+  const isLaptop = useMediaQuery({
+    query: "(max-width: 992px)",
+  });
 
   useLayoutEffect(() => {
     firebase
@@ -40,7 +45,11 @@ const CompTIASecurityPlus = ({ profile, uid }) => {
   return profile ? (
     <>
       <Nav />
-      <div className="container lectures my-5">
+      <div className="container lectures my-5" style={{
+        position: "relative",
+        left: isLaptop ? 0 : 150,
+        width: isLaptop ? "100%" : "71vw",
+      }}>
         {msg && <h1 className="fw-bold text-center">{msg + "..."}</h1>}
         <div className="d-flex flex-column flex-sm-row h-100">
           {!subTopic && (

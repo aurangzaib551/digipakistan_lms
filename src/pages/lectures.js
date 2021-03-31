@@ -31,7 +31,7 @@ const Lectures = ({ profile, uid }) => {
     <>
       <Nav />
       <div
-        className="container courses mt-5"
+        className="container courses mt-5 mt-lms"
         style={{
           marginLeft: isLaptop ? 300 : 0,
           width: isLaptop ? "65vw" : "100%",
@@ -41,10 +41,10 @@ const Lectures = ({ profile, uid }) => {
           <>
             <Paper className="p-3 w-100 course mt-4 border mx-md-3">
               <h3 className="mb-0 fw-bold">
-                {course[0]["First Course Title"]}
+                {course[0]["First Course Name"].name}
               </h3>
               <h6 className="mb-0 fw-light mt-2">
-                {course[0]["First Course Name"].name}
+                {course[0]["First Course Title"]}
               </h6>
               <p className="mb-0 fw-bold mt-2">
                 status:{" "}
@@ -76,10 +76,10 @@ const Lectures = ({ profile, uid }) => {
             {course[1] && (
               <Paper className="p-3 w-100 course mt-4 border mx-md-3">
                 <h3 className="mb-0 fw-bold">
-                  {course[1]["Second Course Title"]}
+                  {course[1]["Second Course Name"].name}
                 </h3>
                 <h6 className="mb-0 fw-light mt-2">
-                  {course[1]["Second Course Name"].name}
+                  {course[1]["Second Course Title"]}
                 </h6>
                 <p className="mb-0 fw-bold mt-2">
                   status:{" "}
@@ -114,10 +114,10 @@ const Lectures = ({ profile, uid }) => {
             {course[2] && (
               <Paper className="p-3 w-100 course mt-4 border mx-md-3">
                 <h3 className="mb-0 fw-bold">
-                  {course[2]["Third Course Title"]}
+                  {course[2]["Third Course Name"].name}
                 </h3>
                 <h6 className="mb-0 fw-light mt-2">
-                  {course[2]["Third Course Name"].name}
+                  {course[2]["Third Course Title"]}
                 </h6>
                 <p className="mb-0 fw-bold mt-2">
                   status:{" "}

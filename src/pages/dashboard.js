@@ -52,7 +52,7 @@ const Dashboard = ({ profile, uid }) => {
     <>
       <Nav />
       <div
-        className="bg-white mt-3"
+        className="bg-white mt-3 mt-lms"
         style={{ marginLeft: isLaptop ? 50 : 390 }}
       >
         <h1 className="fw-bold">Courses</h1>
@@ -73,6 +73,13 @@ const Dashboard = ({ profile, uid }) => {
           }}
         >
           <div className="d-flex flex-wrap justify-content-center justify-content-lg-start">
+            <Paper className="border p-3 mt-4 text-danger text-center small">
+              <span className="fw-bold">Covid19</span>, “Corona is not a
+              life-threatening virus if we promise to maintain social distance,
+              maintain hygiene and follow what our government is asking us to
+              follow. Remember, we have to fight the virus together and hope for
+              a happier and healthier life ahead.”
+            </Paper>
             <ButtonBase onClick={() => go("/lectures")} className="mt-4">
               <Paper className="border box flex-column d-flex p-3 fw-light">
                 <img src={Enrolled} alt="Enrolled Courses" height="250" />
