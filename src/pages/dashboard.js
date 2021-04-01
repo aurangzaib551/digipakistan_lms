@@ -55,7 +55,7 @@ const Dashboard = ({ profile, uid }) => {
         className="bg-white mt-3 mt-lms"
         style={{ marginLeft: isLaptop ? 50 : 390 }}
       >
-        <h1 className="fw-bold">Courses</h1>
+        <h1 className="fw-bold text-uppercase">Courses</h1>
       </div>
       <div
         style={{

@@ -18,6 +18,14 @@ body {
   }
 }
 
+.color {
+  color: #02a39b;
+}
+
+.break {
+  word-break: break-all !important;
+}
+
 .notifications {
   max-height: 600px !important;
   .title {
@@ -27,6 +35,12 @@ body {
 
 .mt-lms {
   margin-top: 90px !important;
+}
+
+@media only screen and (max-width: 576px) {
+  .mt-lms {
+    margin-top: 150px !important;
+  }
 }
 
 .bg {

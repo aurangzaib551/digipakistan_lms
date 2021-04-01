@@ -87,147 +87,156 @@ const Profile = ({ profile, uid, data }) => {
     <>
       <Nav />
       <div
-        className="container profile my-5 mt-lms"
+        className="bg-white mt-3 mt-lms"
+        style={{ marginLeft: isLaptop ? 50 : 390 }}
+      >
+        <h1 className="fw-bold text-uppercase">Profile</h1>
+      </div>
+      <div
         style={{
-          position: "relative",
-          left: isLaptop ? 0 : 150,
-          width: isLaptop ? "100%" : "71vw",
+          backgroundColor: "#eee",
+          height: isLaptop ? "auto" : 700,
         }}
       >
-        <div className="d-flex flex-column align-items-center">
-          <IconButton onClick={handleClick} className="p-0">
-            {profile.picture ? (
-              <Avatar
-                className="avatar"
-                alt={profile.fullName}
-                src={profile.picture}
-              ></Avatar>
-            ) : (
-              <Avatar className="avatar">{profile.initials}</Avatar>
+        <div
+          className="container d-flex flex-lg-row flex-column profile py-5"
+          style={{
+            position: "relative",
+            left: isLaptop ? 0 : 150,
+            width: isLaptop ? "100%" : "71vw",
+          }}
+        >
+          <div className="d-flex flex-column align-items-center">
+            <Paper className="py-3 border" square>
+              <div className="d-flex flex-column align-items-center">
+                <div className="circle-avatar">
+                  <IconButton onClick={handleClick} className="p-0">
+                    {profile.picture ? (
+                      <Avatar
+                        className="avatar"
+                        alt={profile.fullName}
+                        src={profile.picture}
+                      ></Avatar>
+                    ) : (
+                      <Avatar className="avatar">{profile.initials}</Avatar>
+                    )}
+                  </IconButton>
+                </div>
+                <h3 className="fw-bold text-nowrap mx-3 my-2 text-center">
+                  {profile.fullName}
+                </h3>
+              </div>
+            </Paper>
+
+            {image && (
+              <Button
+                onClick={handleUpload}
+                disabled={loading}
+                variant="contained"
+                className="custom-button mt-3"
+                fullWidth
+              >
+                {loading ? <CircularProgress className="loader" /> : "Upload"}
+              </Button>
             )}
-          </IconButton>
 
-          {image && (
-            <Button
-              onClick={handleUpload}
-              disabled={loading}
-              variant="contained"
-              className="custom-button mt-3"
-              fullWidth
-            >
-              {loading ? <CircularProgress className="loader" /> : "Upload"}
-            </Button>
-          )}
+            {progress > 0 && (
+              <>
+                <LinearProgress
+                  variant="determinate"
+                  style={{ width: "100%" }}
+                  value={progress}
+                  className="mt-3"
+                />
+                <h5>{progress + "%"}</h5>
+              </>
+            )}
+            <input
+              type="file"
+              className="d-none"
+              accept="image/*"
+              name="image"
+              ref={file}
+              onChange={handleFile}
+            />
+          </div>
 
-          {progress > 0 && (
-            <>
-              <LinearProgress
-                variant="determinate"
-                style={{ width: "100%" }}
-                value={progress}
-                className="mt-3"
-              />
-              <h5>{progress + "%"}</h5>
-            </>
-          )}
-          <input
-            type="file"
-            className="d-none"
-            accept="image/*"
-            name="image"
-            ref={file}
-            onChange={handleFile}
-          />
-        </div>
-
-        {data.CNIC ? (
-          <TableContainer className="mt-3 border" component={Paper}>
-            <Table aria-label="simple table">
-              <TableBody>
-                <TableRow>
-                  <TableCell className="fw-bold" component="th" scope="row">
-                    Roll #
-                  </TableCell>
-                  <TableCell component="th" scope="row">
-                    {profile.rollNumber}
-                  </TableCell>
-                </TableRow>
-              </TableBody>
-              <TableBody>
-                <TableRow>
-                  <TableCell className="fw-bold" component="th" scope="row">
-                    Full Name
-                  </TableCell>
-                  <TableCell component="th" scope="row">
+          {data.CNIC ? (
+            <Paper className="p-3 w-100 border ms-lg-3" square>
+              <h3 className="fw-bold color mb-0">Personal Details</h3>
+              <div className="row mt-2">
+                <div className="col-4 d-flex align-items-center">
+                  <h5 className="fw-bold mb-0">Roll #</h5>
+                </div>
+                <div className="col-8 d-flex align-items-center">
+                  <span className="fw-bold">:</span>
+                  <h5 className="ms-5 fw-normal mb-0">{profile.rollNumber}</h5>
+                </div>
+                <div className="col-4 d-flex align-items-center mt-4">
+                  <h5 className="fw-bold mb-0">Full Name</h5>
+                </div>
+                <div className="col-8 mt-4 d-flex align-items-center">
+                  <span className="fw-bold">:</span>
+                  <h5 className="ms-5 fw-normal mb-0 text-capitalize">
                     {profile.fullName}
-                  </TableCell>
-                </TableRow>
-              </TableBody>
-              <TableBody>
-                <TableRow>
-                  <TableCell className="fw-bold" component="th" scope="row">
-                    Father Name
-                  </TableCell>
-                  <TableCell component="th" scope="row">
+                  </h5>
+                </div>
+                <div className="col-4 d-flex align-items-center mt-4">
+                  <h5 className="fw-bold mb-0">Father Name</h5>
+                </div>
+                <div className="col-8 mt-4 d-flex align-items-center">
+                  <span className="fw-bold">:</span>
+                  <h5 className="ms-5 mb-0 fw-normal text-capitalize">
                     {profile.fatherName}
-                  </TableCell>
-                </TableRow>
-              </TableBody>
-              <TableBody>
-                <TableRow>
-                  <TableCell className="fw-bold" component="th" scope="row">
-                    Email
-                  </TableCell>
-                  <TableCell component="th" scope="row">
-                    {data.Email}
-                  </TableCell>
-                </TableRow>
-              </TableBody>
-              <TableBody>
-                <TableRow>
-                  <TableCell className="fw-bold" component="th" scope="row">
-                    Mobile #
-                  </TableCell>
-                  <TableCell component="th" scope="row">
+                  </h5>
+                </div>
+                <div className="col-4 d-flex align-items-center mt-4">
+                  <h5 className="fw-bold mb-0">Email</h5>
+                </div>
+                <div className="col-8 mt-4 d-flex align-items-center">
+                  <span className="fw-bold">:</span>
+                  <h5 className="ms-5 mb-0 fw-normal break">{data.Email}</h5>
+                </div>
+                <div className="col-4 d-flex align-items-center mt-4">
+                  <h5 className="fw-bold mb-0">Mobile #</h5>
+                </div>
+                <div className="col-8 mt-4 d-flex align-items-center">
+                  <span className="fw-bold">:</span>
+                  <h5 className="ms-5 mb-0 fw-normal break">
                     {data["Mobile Number"]}
-                  </TableCell>
-                </TableRow>
-              </TableBody>
-              <TableBody>
-                <TableRow>
-                  <TableCell className="fw-bold" component="th" scope="row">
-                    D.O.B
-                  </TableCell>
-                  <TableCell component="th" scope="row">
+                  </h5>
+                </div>
+                <div className="col-4 mt-4 d-flex align-items-center">
+                  <h5 className="fw-bold mb-0">D.O.B</h5>
+                </div>
+                <div className="col-8 mt-4 d-flex align-items-center">
+                  <span className="fw-bold">:</span>
+                  <h5 className="ms-5 mb-0 fw-normal">
                     {data["Date of Birth"]}
-                  </TableCell>
-                </TableRow>
-              </TableBody>
-              <TableBody>
-                <TableRow>
-                  <TableCell className="fw-bold" component="th" scope="row">
-                    City
-                  </TableCell>
-                  <TableCell component="th" scope="row">
+                  </h5>
+                </div>
+                <div className="col-4 d-flex align-items-center mt-4">
+                  <h5 className="fw-bold mb-0 mb-0">City</h5>
+                </div>
+                <div className="col-8 mt-4 d-flex align-items-center">
+                  <span className="fw-bold">:</span>
+                  <h5 className="ms-5 mb-0 fw-normal text-capitalize">
                     {data.City}
-                  </TableCell>
-                </TableRow>
-              </TableBody>
-              <TableBody>
-                <TableRow>
-                  <TableCell className="fw-bold" component="th" scope="row">
-                    CNIC
-                  </TableCell>
-                  <TableCell component="th" scope="row">
-                    {data.CNIC}
-                  </TableCell>
-                </TableRow>
-              </TableBody>
-            </Table>
-          </TableContainer>
-        ) : (
-          <CircularProgress style={{ color: "#02a39b" }} />
-        )}
+                  </h5>
+                </div>
+                <div className="col-4 d-flex align-items-center mt-4">
+                  <h5 className="fw-bold mb-0 mb-0">CNIC</h5>
+                </div>
+                <div className="col-8 mt-4 d-flex align-items-center">
+                  <span className="fw-bold">:</span>
+                  <h5 className="ms-5 mb-0 fw-normal break">{data.CNIC}</h5>
+                </div>
+              </div>
+            </Paper>
+          ) : (
+            <CircularProgress style={{ color: "#02a39b" }} />
+          )}
+        </div>
       </div>
     </>
   ) : (

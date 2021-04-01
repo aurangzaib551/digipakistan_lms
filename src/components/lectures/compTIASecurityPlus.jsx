@@ -45,11 +45,14 @@ const CompTIASecurityPlus = ({ profile, uid }) => {
   return profile ? (
     <>
       <Nav />
-      <div className="container lectures my-5" style={{
-        position: "relative",
-        left: isLaptop ? 0 : 150,
-        width: isLaptop ? "100%" : "71vw",
-      }}>
+      <div
+        className="container lectures my-5 mt-lms"
+        style={{
+          position: "relative",
+          left: isLaptop ? 0 : 150,
+          width: isLaptop ? "100%" : "71vw",
+        }}
+      >
         {msg && <h1 className="fw-bold text-center">{msg + "..."}</h1>}
         <div className="d-flex flex-column flex-sm-row h-100">
           {!subTopic && (

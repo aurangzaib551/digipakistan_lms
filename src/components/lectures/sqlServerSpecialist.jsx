@@ -40,7 +40,7 @@ const SqlServerSpecialist = ({ profile, uid }) => {
   return profile ? (
     <>
       <Nav />
-      <div className="container lectures my-5">
+      <div className="container mt-lms lectures my-5">
         {msg && <h1 className="fw-bold text-center">{msg + "..."}</h1>}
         <div className="d-flex flex-column flex-sm-row h-100">
           {!subTopic && (

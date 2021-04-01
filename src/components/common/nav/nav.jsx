@@ -382,7 +382,7 @@ const Nav = ({ signOut, profile }) => {
                   <i className="fas fa-question-circle text-white fa-2x"></i>
                 </ListItemIcon>
                 <ListItemText>
-                  <span className="fw-bold">Quizizz</span>
+                  <span className="fw-bold">Quizzes</span>
                 </ListItemText>
               </ListItem>
               <ListItem

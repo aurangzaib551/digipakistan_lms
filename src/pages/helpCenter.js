@@ -111,10 +111,8 @@ const HelpCenter = ({ profile, uid }) => {
           width: isLaptop ? "100%" : "71vw",
         }}
       >
-        <h1 className="text-center fw-bold">Help Center</h1>
-
         <div className="ps-sm-3 px-3 d-flex flex-column justify-content-center">
-          <h1 className="fw-bold mb-sm-0">Got a Question?</h1>
+          <h1 className="fw-bold mb-sm-0 text-uppercase">Help Center</h1>
           <p className="text-justify">
             Is there something you can’t find an answer to or do you have
             something else you need help with? Let us know by filling out the
