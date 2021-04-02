@@ -16,6 +16,18 @@ const Lectures = ({ profile, uid }) => {
     query: "(min-width: 992px)",
   });
 
+  const isLaptop2 = useMediaQuery({
+    query: "(max-width: 992px)",
+  });
+
+  const isTab = useMediaQuery({
+    query: "(max-width: 768px)",
+  });
+
+  const isMobile = useMediaQuery({
+    query: "(max-width: 340px)",
+  });
+
   // Checking LMS Status
   if (!profile.lms) return <Redirect to="/info" />;
   // Checking user is logged in or not
@@ -31,7 +43,13 @@ const Lectures = ({ profile, uid }) => {
     <>
       <Nav />
       <div
-        className="container courses mt-5 mt-lms"
+        className="bg-white mt-3 mt-lms"
+        style={{ marginLeft: isLaptop2 ? 50 : 335 }}
+      >
+        <h1 className="fw-bold text-uppercase">Lectures</h1>
+      </div>
+      <div
+        className="container-lg courses mt-5"
         style={{
           marginLeft: isLaptop ? 300 : 0,
           width: isLaptop ? "65vw" : "100%",
@@ -39,65 +57,38 @@ const Lectures = ({ profile, uid }) => {
       >
         {course[0] && (
           <>
-            <Paper className="p-3 w-100 course mt-4 border mx-md-3">
-              <h3 className="mb-0 fw-bold">
-                {course[0]["First Course Name"].name}
-              </h3>
-              <h6 className="mb-0 fw-light mt-2">
-                {course[0]["First Course Title"]}
-              </h6>
-              <p className="mb-0 fw-bold mt-2">
-                status:{" "}
-                <span
-                  className={
-                    course[0]["First Course Name"].status
-                      ? "badge bg-success"
-                      : "badge bg-danger"
-                  }
-                >
-                  {course[0]["First Course Name"].status ? "Online" : "Offline"}
-                </span>
-              </p>
-              {course[0]["First Course Name"].status ? (
-                <Button
-                  onClick={() => go(course[0]["First Course Name"].link)}
-                  variant="contained"
-                  className="outline mt-2 custom-button"
-                  color="primary"
-                >
-                  Open Portal
-                </Button>
-              ) : (
-                <span className="fw-bold text-danger mt-2 d-inline-block">
-                  Go to our website and pay your this course fee
-                </span>
-              )}
-            </Paper>
-            {course[1] && (
-              <Paper className="p-3 w-100 course mt-4 border mx-md-3">
+            <div className="d-flex flex-column flex-md-row align-items-lg-center">
+              <img
+                src="https://i.ibb.co/tsdKqkT/lec-1.jpg"
+                alt={course[0]["First Course Name"].name}
+                width={isMobile ? "100%" : isTab ? "300" : "350"}
+                height={isTab ? "auto" : "193"}
+              />
+              <Paper className="p-3 w-100 course border mx-md-3">
+                <h6 className="fw-bold color">About Course</h6>
                 <h3 className="mb-0 fw-bold">
-                  {course[1]["Second Course Name"].name}
+                  {course[0]["First Course Name"].name}
                 </h3>
                 <h6 className="mb-0 fw-light mt-2">
-                  {course[1]["Second Course Title"]}
+                  {course[0]["First Course Title"]}
                 </h6>
                 <p className="mb-0 fw-bold mt-2">
                   status:{" "}
                   <span
                     className={
-                      course[1]["Second Course Name"].status
+                      course[0]["First Course Name"].status
                         ? "badge bg-success"
                         : "badge bg-danger"
                     }
                   >
-                    {course[1]["Second Course Name"].status
+                    {course[0]["First Course Name"].status
                       ? "Online"
                       : "Offline"}
                   </span>
                 </p>
-                {course[1]["Second Course Name"].status ? (
+                {course[0]["First Course Name"].status ? (
                   <Button
-                    onClick={() => go(course[1]["Second Course Name"].link)}
+                    onClick={() => go(course[0]["First Course Name"].link)}
                     variant="contained"
                     className="outline mt-2 custom-button"
                     color="primary"
@@ -106,48 +97,105 @@ const Lectures = ({ profile, uid }) => {
                   </Button>
                 ) : (
                   <span className="fw-bold text-danger mt-2 d-inline-block">
-                    Go to our website and pay your this course fee
+                    To access this course complete your registeration process.
                   </span>
                 )}
               </Paper>
+            </div>
+            {course[1] && (
+              <div className="d-flex flex-column flex-md-row align-items-lg-center mt-4">
+                <img
+                  src="https://i.ibb.co/2qVGtvM/lec-2.jpg"
+                  alt={course[1]["Second Course Name"].name}
+                  width={isMobile ? "100%" : isTab ? "300" : "350"}
+                  height={isTab ? "auto" : "193"}
+                />
+
+                <Paper className="p-3 w-100 course border mx-md-3">
+                  <h6 className="fw-bold color">About Course</h6>
+                  <h3 className="mb-0 fw-bold">
+                    {course[1]["Second Course Name"].name}
+                  </h3>
+                  <h6 className="mb-0 fw-light mt-2">
+                    {course[1]["Second Course Title"]}
+                  </h6>
+                  <p className="mb-0 fw-bold mt-2">
+                    status:{" "}
+                    <span
+                      className={
+                        course[1]["Second Course Name"].status
+                          ? "badge bg-success"
+                          : "badge bg-danger"
+                      }
+                    >
+                      {course[1]["Second Course Name"].status
+                        ? "Online"
+                        : "Offline"}
+                    </span>
+                  </p>
+                  {course[1]["Second Course Name"].status ? (
+                    <Button
+                      onClick={() => go(course[1]["Second Course Name"].link)}
+                      variant="contained"
+                      className="outline mt-2 custom-button"
+                      color="primary"
+                    >
+                      Open Portal
+                    </Button>
+                  ) : (
+                    <span className="fw-bold text-danger mt-2 d-inline-block">
+                      To access this course complete your registeration process.
+                    </span>
+                  )}
+                </Paper>
+              </div>
             )}
             {course[2] && (
-              <Paper className="p-3 w-100 course mt-4 border mx-md-3">
-                <h3 className="mb-0 fw-bold">
-                  {course[2]["Third Course Name"].name}
-                </h3>
-                <h6 className="mb-0 fw-light mt-2">
-                  {course[2]["Third Course Title"]}
-                </h6>
-                <p className="mb-0 fw-bold mt-2">
-                  status:{" "}
-                  <span
-                    className={
-                      course[2]["Third Course Name"].status
-                        ? "badge bg-success"
-                        : "badge bg-danger"
-                    }
-                  >
-                    {course[2]["Third Course Name"].status
-                      ? "Online"
-                      : "Offline"}
-                  </span>
-                </p>
-                {course[2]["Third Course Name"].status ? (
-                  <Button
-                    onClick={() => go(course[2]["Third Course Name"].link)}
-                    variant="contained"
-                    className="outline mt-2 custom-button"
-                    color="primary"
-                  >
-                    Open Portal
-                  </Button>
-                ) : (
-                  <span className="fw-bold text-danger mt-2 d-inline-block">
-                    Go to our website and pay your this course fee
-                  </span>
-                )}
-              </Paper>
+              <div className="d-flex flex-column flex-md-row align-items-lg-center mt-4">
+                <img
+                  src="https://i.ibb.co/DRf2J8d/lec-3.jpg"
+                  alt={course[2]["Third Course Name"].name}
+                  width={isMobile ? "100%" : isTab ? "300" : "350"}
+                  height={isTab ? "auto" : "193"}
+                />
+                <Paper className="p-3 w-100 course border mx-md-3">
+                  <h6 className="fw-bold color">About Course</h6>
+                  <h3 className="mb-0 fw-bold">
+                    {course[2]["Third Course Name"].name}
+                  </h3>
+                  <h6 className="mb-0 fw-light mt-2">
+                    {course[2]["Third Course Title"]}
+                  </h6>
+                  <p className="mb-0 fw-bold mt-2">
+                    status:{" "}
+                    <span
+                      className={
+                        course[2]["Third Course Name"].status
+                          ? "badge bg-success"
+                          : "badge bg-danger"
+                      }
+                    >
+                      {course[2]["Third Course Name"].status
+                        ? "Online"
+                        : "Offline"}
+                    </span>
+                  </p>
+                  {course[2]["Third Course Name"].status ? (
+                    <Button
+                      onClick={() => go(course[2]["Third Course Name"].link)}
+                      variant="contained"
+                      className="outline mt-2 custom-button"
+                      color="primary"
+                    >
+                      Open Portal
+                    </Button>
+                  ) : (
+                    <span className="fw-bold text-danger mt-2 d-inline-block">
+                      To access this course complete your registeration process.
+                    </span>
+                  )}
+                </Paper>
+              </div>
             )}
           </>
         )}

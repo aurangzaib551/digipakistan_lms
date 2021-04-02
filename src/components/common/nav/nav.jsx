@@ -154,7 +154,11 @@ const Nav = ({ signOut, profile }) => {
                   className="w-100 d-block"
                   onClick={() => {
                     handleClose();
-                    push(profile.course[0]["First Course Name"].link);
+                    push(
+                      profile.course[0]["First Course Name"].status
+                        ? profile.course[0]["First Course Name"].link
+                        : "/dashboard"
+                    );
                   }}
                 >
                   {profile.course[0]["First Course Name"].name}
@@ -165,7 +169,11 @@ const Nav = ({ signOut, profile }) => {
                   className="w-100 d-block"
                   onClick={() => {
                     handleClose();
-                    push(profile.course[1]["Second Course Name"].link);
+                    push(
+                      profile.course[1]["Second Course Name"].status
+                        ? profile.course[1]["Second Course Name"].link
+                        : "/dashboard"
+                    );
                   }}
                 >
                   {profile.course[1]["Second Course Name"].name}
@@ -176,7 +184,11 @@ const Nav = ({ signOut, profile }) => {
                   className="w-100 d-block"
                   onClick={() => {
                     handleClose();
-                    push(profile.course[2]["Third Course Name"].link);
+                    push(
+                      profile.course[2]["Third Course Name"].status
+                        ? profile.course[2]["Third Course Name"].link
+                        : "/dashboard"
+                    );
                   }}
                 >
                   {profile.course[2]["Third Course Name"].name}

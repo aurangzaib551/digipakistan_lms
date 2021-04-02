@@ -91,7 +91,7 @@ const Dashboard = ({ profile, uid }) => {
                   <div className="d-flex flex-column align-items-start">
                     <p className="h6">Here are all courses list</p>
                     <p className="h6 mb-0 mt-4">
-                      Students &nbsp;&nbsp; - &nbsp;&nbsp; 120+
+                      Students &nbsp;&nbsp; - &nbsp;&nbsp; --
                     </p>
                   </div>
                 </div>
@@ -111,7 +111,7 @@ const Dashboard = ({ profile, uid }) => {
                   <div className="d-flex flex-column align-items-start">
                     <p className="h6">Here are all courses list</p>
                     <p className="h6 mb-0 mt-4">
-                      Students &nbsp;&nbsp; - &nbsp;&nbsp; 100+
+                      Students &nbsp;&nbsp; - &nbsp;&nbsp; --
                     </p>
                   </div>
                 </div>
