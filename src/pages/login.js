@@ -4,7 +4,7 @@ import Button from "@material-ui/core/Button";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { connect } from "react-redux";
 import { signIn, clearAll } from "../store/actions/authActions";
-import { Redirect, useHistory } from "react-router-dom";
+import { Link, Redirect, useHistory } from "react-router-dom";
 import ToastServive from "react-material-toast";
 
 const toast = ToastServive.new({
@@ -94,6 +94,10 @@ const LogIn = (props) => {
             required
             fullWidth
           />
+
+          <Link to="/forgotPassword" className="link small mt-3 d-inline-block">
+            Forgot Password
+          </Link>
 
           <Button
             type="submit"

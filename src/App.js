@@ -106,6 +106,7 @@ import MayaMaxAnimation3D from "./components/lectures/3dMayaMaxAnimation";
 import Autocad from "./components/lectures/autocad";
 import profile from "./pages/profile";
 import HelpCenter from "./pages/helpCenter";
+import ForgotPassword from "./pages/forgotPassword";
 
 const App = () => {
   return (
@@ -117,6 +118,7 @@ const App = () => {
       <Route path="/assignments" component={Assignments} />
       <Route path="/help" component={HelpCenter} />
       <Route path="/profile" component={profile} />
+      <Route path="/forgotPassword" component={ForgotPassword} />
       <Route
         path="/lmsDashboard/myCourses/frontEndLMS"
         exact

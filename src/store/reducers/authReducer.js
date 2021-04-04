@@ -1,5 +1,6 @@
 const initialState = {
   msg: "",
+  resetPasswordMsg: "",
 };
 
 const authReducer = (state = initialState, action) => {
@@ -18,6 +19,12 @@ const authReducer = (state = initialState, action) => {
       return {
         ...state,
         msg: "",
+        resetPasswordMsg: "",
+      };
+    case "RESET_PASSWORD":
+      return {
+        ...state,
+        resetPasswordMsg: action.payload,
       };
     default:
       return state;

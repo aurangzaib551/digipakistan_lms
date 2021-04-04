@@ -30,6 +30,9 @@ const Info = ({ profile, uid, signOut }) => {
       <h1 className="text-center mx-3 display-4 fw-bold">
         Your Payment hasn't been verified.
       </h1>
+      <h1 className="text-center mx-3 display-4 fw-bold">
+        Roll # <span className="fw-light">{profile.rollNumber}</span>
+      </h1>
       <div className="d-flex justify-content-center mt-3">
         <Button
           onClick={() => {

@@ -108,7 +108,7 @@ const Profile = ({ profile, uid, data }) => {
         >
           <div className="d-flex flex-column align-items-center">
             <Paper className="py-3 border" square>
-              <div className="d-flex flex-column align-items-center">
+              <div className="d-flex flex-column mx-3 align-items-center">
                 <div className="circle-avatar">
                   <IconButton onClick={handleClick} className="p-0">
                     {profile.picture ? (
