@@ -27,6 +27,7 @@ const Profile = ({ profile, uid, data }) => {
   const [image, setImage] = useState("");
   const [progress, setProgress] = useState(0);
   const [loading, setLoading] = useState(false);
+  const [url, setURL] = useState("");
 
   const file = React.createRef();
 
@@ -66,22 +67,27 @@ const Profile = ({ profile, uid, data }) => {
           .child(`${image.name}`)
           .getDownloadURL()
           .then((url) => {
-            firebase
-              .firestore()
-              .collection("users")
-              .doc(uid)
-              .update({
-                picture: url,
-              })
-              .then(() => {
-                setLoading(false);
-                setImage("");
-                setProgress(0);
-              });
+            setURL(url);
           });
       }
     );
   };
+
+  if (url) {
+    firebase
+      .firestore()
+      .collection("users")
+      .doc(uid)
+      .update({
+        picture: url,
+      })
+      .then(() => {
+        setLoading(false);
+        setImage("");
+        setProgress(0);
+        setURL("");
+      });
+  }
 
   return profile ? (
     <>

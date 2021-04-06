@@ -201,13 +201,9 @@ const Nav = ({ signOut, profile }) => {
               onClick={handleClick3}
               className="d-flex align-items-center text-white"
             >
-              {notifications.length > 0 ? (
-                <Badge color="secondary" variant="dot">
-                  <i className="fas fa-bell"></i>
-                </Badge>
-              ) : (
+              <Badge color="secondary" variant="dot">
                 <i className="fas fa-bell"></i>
-              )}
+              </Badge>
             </IconButton>
             <Menu
               id="simple-menu"
@@ -217,6 +213,9 @@ const Nav = ({ signOut, profile }) => {
               className="notifications mt-5"
               onClose={handleClose3}
             >
+              <div className="p-3 pb-0">
+                <h6 className="fw-bold title mb-0">1 new announcement</h6>
+              </div>
               {notifications.length > 0 ? (
                 <div>
                   {notifications.map((notification, ind) => {
@@ -422,6 +421,21 @@ const Nav = ({ signOut, profile }) => {
                 <ListItemText>
                   <span className="fw-bold">Help Center</span>
                 </ListItemText>
+              </ListItem>
+              <ListItem
+                button
+                onClick={() => {
+                  go("/announcements");
+                }}
+              >
+                <Badge color="secondary" variant="dot">
+                  <ListItemIcon>
+                    <i className="fas fa-bullhorn text-white fa-2x"></i>
+                  </ListItemIcon>
+                  <ListItemText>
+                    <span className="fw-bold">Announcements</span>
+                  </ListItemText>
+                </Badge>
               </ListItem>
               <ListItem
                 button

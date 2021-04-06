@@ -28,7 +28,11 @@ const Info = ({ profile, uid, signOut }) => {
   return profile.fullName ? (
     <div className="container my-5">
       <h1 className="text-center mx-3 display-4 fw-bold">
-        Your Payment hasn't been verified.
+        We appreciate your interest but regret to inform that you are not
+        providing access to LMS Portal due to non-verification of registration
+        charges. If you think this is an error on the part of the programme, you
+        can mail us at{" "}
+        <a href="mailto:accounts@digipakistan.org">accounts@digipakistan.org</a>
       </h1>
       <h1 className="text-center mx-3 display-4 fw-bold">
         Roll # <span className="fw-light">{profile.rollNumber}</span>

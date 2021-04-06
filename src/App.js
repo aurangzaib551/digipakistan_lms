@@ -107,6 +107,7 @@ import Autocad from "./components/lectures/autocad";
 import profile from "./pages/profile";
 import HelpCenter from "./pages/helpCenter";
 import ForgotPassword from "./pages/forgotPassword";
+import Announcements from "./pages/announcements";
 
 const App = () => {
   return (
@@ -119,6 +120,7 @@ const App = () => {
       <Route path="/help" component={HelpCenter} />
       <Route path="/profile" component={profile} />
       <Route path="/forgotPassword" component={ForgotPassword} />
+      <Route path="/announcements" component={Announcements} />
       <Route
         path="/lmsDashboard/myCourses/frontEndLMS"
         exact
