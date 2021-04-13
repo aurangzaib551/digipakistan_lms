@@ -104,10 +104,11 @@ import DigitalMarketing from "./components/lectures/digitalMarketing";
 import MayaMaxAnimation3D from "./components/lectures/3dMayaMaxAnimation";
 
 import Autocad from "./components/lectures/autocad";
-import profile from "./pages/profile";
+import Profile from "./pages/profile";
 import HelpCenter from "./pages/helpCenter";
 import ForgotPassword from "./pages/forgotPassword";
 import Announcements from "./pages/announcements";
+import Policy from "./pages/policy";
 
 const App = () => {
   return (
@@ -118,7 +119,8 @@ const App = () => {
       <Route path="/quizizz" component={Quizizz} />
       <Route path="/assignments" component={Assignments} />
       <Route path="/help" component={HelpCenter} />
-      <Route path="/profile" component={profile} />
+      <Route path="/profile" component={Profile} />
+      <Route path="/policy" component={Policy} />
       <Route path="/forgotPassword" component={ForgotPassword} />
       <Route path="/announcements" component={Announcements} />
       <Route

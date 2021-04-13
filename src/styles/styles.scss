@@ -71,6 +71,21 @@ body {
   }
 }
 
+@media only screen and (max-width: 1160px) {
+  .modalLeft {
+    margin-left: 140px !important;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .modalLeft {
+    margin-left: 0px !important;
+  }
+}
+.outline {
+  outline: none !important;
+}
+
 .profile-menu {
   width: 260px !important;
   margin-top: 50px;

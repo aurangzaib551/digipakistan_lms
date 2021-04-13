@@ -8,11 +8,6 @@ import { useMediaQuery } from "react-responsive";
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
 import { CircularProgress, IconButton } from "@material-ui/core";
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
-import TableContainer from "@material-ui/core/TableContainer";
-import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import firebase from "../config/fbConfig";
 import LinearProgress from "@material-ui/core/LinearProgress";
@@ -46,7 +41,10 @@ const Profile = ({ profile, uid, data }) => {
 
   const handleUpload = () => {
     setLoading(true);
-    const upload = firebase.storage().ref(`images/${image.name}`).put(image);
+    const upload = firebase
+      .storage()
+      .ref(`images/${profile.fullName}`)
+      .put(image);
     upload.on(
       "state_changed",
       (snapshot) => {

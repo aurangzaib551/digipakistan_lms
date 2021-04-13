@@ -6,7 +6,7 @@ import Nav from "../components/common/nav/nav";
 import Paper from "@material-ui/core/Paper";
 import { useMediaQuery } from "react-responsive";
 
-const Announcements = ({ profile, uid }) => {
+const Policy = ({ profile, uid }) => {
   const isLaptop = useMediaQuery({
     query: "(max-width: 992px)",
   });
@@ -22,7 +22,7 @@ const Announcements = ({ profile, uid }) => {
         className="bg-white mt-3 mt-lms"
         style={{ marginLeft: isLaptop ? 50 : 390 }}
       >
-        <h1 className="fw-bold text-uppercase">Announcements</h1>
+        <h1 className="fw-bold text-uppercase">Policy</h1>
       </div>
       <div
         style={{
@@ -39,16 +39,17 @@ const Announcements = ({ profile, uid }) => {
           }}
         >
           <Paper elevation={10} className="p-3 border w-100">
-            <h3 className="fw-bold">Dear Student!</h3>
-            <p>
-              We are determined to provide excellent service to our students.
-              Please be informed that start date of the course has been delayed
-              due to software up-gradation to incorporate latest features. Now
-              the course will start on 12th April 2021. In Sha Allah
+            <h3 className="fw-bold">DISCLAIMER:</h3>
+            <p className="mb-0">
+              All the training material uploaded in DigiPAKISTAN LMS is
+              exclusive, confidential and may also be legally privileged. It is
+              intended solely for the use of registered students of their
+              respective course. Downloading, dissemination, distribution,
+              copying or disclosure of any course material, entirely or
+              partially is strictly prohibited unless authorized by
+              DigiPAKISTAN. Violation of this notice is unlawful and may trigger
+              legal proceedings.
             </p>
-            <p className="mb-0">Thanks for your cooperation.</p>
-            <p className="mb-0">Regards</p>
-            <h6 className="mb-0 fw-bold">Team DigiPAKISTAN</h6>
           </Paper>
         </div>
       </div>
@@ -65,4 +66,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(Announcements);
+export default connect(mapStateToProps)(Policy);

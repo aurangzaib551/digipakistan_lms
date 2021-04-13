@@ -440,6 +440,19 @@ const Nav = ({ signOut, profile }) => {
               <ListItem
                 button
                 onClick={() => {
+                  go("/policy");
+                }}
+              >
+                <ListItemIcon>
+                  <i className="fas fa-clipboard-check text-white fa-2x"></i>
+                </ListItemIcon>
+                <ListItemText>
+                  <span className="fw-bold">Privacy Policy</span>
+                </ListItemText>
+              </ListItem>
+              <ListItem
+                button
+                onClick={() => {
                   signOut();
                 }}
               >
