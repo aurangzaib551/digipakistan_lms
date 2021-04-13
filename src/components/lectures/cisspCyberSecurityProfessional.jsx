@@ -6,7 +6,6 @@ import Nav from "../../components/common/nav/nav";
 import Button from "@material-ui/core/Button";
 import firebase from "../../config/fbConfig";
 import { useMediaQuery } from "react-responsive";
-import { useMediaQuery } from "react-responsive";
 import ReactStars from "react-rating-stars-component";
 import Modal from "react-bootstrap/Modal";
 import Input from "@material-ui/core/TextField";
