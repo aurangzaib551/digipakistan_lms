@@ -9,6 +9,7 @@ import ReactStars from "react-rating-stars-component";
 import Modal from "react-bootstrap/Modal";
 import Input from "@material-ui/core/TextField";
 import { CircularProgress } from "@material-ui/core";
+import { useMediaQuery } from "react-responsive";
 
 const MayaMax3DAnimation = ({ profile, uid }) => {
   // State
@@ -23,11 +24,13 @@ const MayaMax3DAnimation = ({ profile, uid }) => {
   const [show, setShow] = useState(false);
   const [comment, setComment] = useState("");
   const [loading, setLoading] = useState(false);
+  const [dataloading, setDataLoading] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   useLayoutEffect(() => {
+    setDataLoading(true);
     firebase
       .firestore()
       .collection("3D Maya Max Animation")
@@ -39,8 +42,10 @@ const MayaMax3DAnimation = ({ profile, uid }) => {
         });
         if (data.length === 0) {
           setMsg("Lectures will be uploaded soon");
+          setDataLoading(false);
         } else if (data.length > 0) {
           setMsg("");
+          setDataLoading(false);
         }
         setLectures(data);
       });
@@ -111,6 +116,10 @@ const MayaMax3DAnimation = ({ profile, uid }) => {
     }
   };
 
+  const isLaptop = useMediaQuery({
+    query: "(max-width: 992px)",
+  });
+
   const stars = availableRatings.filter((val) => val.courseName === topic);
 
   // Checking LMS Status
@@ -120,7 +129,19 @@ const MayaMax3DAnimation = ({ profile, uid }) => {
   return profile && uid ? (
     <>
       <Nav />
-      <div className="container lectures my-5 mt-lms">
+      <div
+        className="container lectures my-5 mt-lms"
+        style={{
+          position: "relative",
+          left: isLaptop ? 0 : 150,
+          width: isLaptop ? "100%" : "71vw",
+        }}
+      >
+        {dataloading && (
+          <div className="d-flex justify-content-center my-4">
+            <CircularProgress style={{ color: "#02a39b" }} />
+          </div>
+        )}
         {msg && <h1 className="fw-bold text-center">{msg + "..."}</h1>}
         <div className="d-flex flex-column flex-sm-row h-100">
           {!subTopic && (
@@ -200,7 +221,7 @@ const MayaMax3DAnimation = ({ profile, uid }) => {
               )}
             </div>
           )}
-          {video && (
+          {video ? (
             <div className="video">
               <iframe
                 title={Math.random()}
@@ -260,6 +281,13 @@ const MayaMax3DAnimation = ({ profile, uid }) => {
                 </>
               )}
             </div>
+          ) : (
+            <img
+              src="https://i.ibb.co/Sd0qZ7X/dplmslogo.png"
+              alt="DigiPAKISTAN"
+              width="400"
+              height="100"
+            />
           )}
         </div>
       </div>

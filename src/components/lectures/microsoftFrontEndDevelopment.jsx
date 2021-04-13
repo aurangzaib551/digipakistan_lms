@@ -19,6 +19,7 @@ const MicrosoftFrontEndDevelopment = ({ profile, uid }) => {
   const [video, setVideo] = useState("");
   const [msg, setMsg] = useState("");
   const [topic, setTopic] = useState("");
+  const [dataloading, setDataLoading] = useState(false);
   const [availableRatings, setAvailableRatings] = useState([]);
   const [rating, setRating] = useState(0);
   const [show, setShow] = useState(false);
@@ -33,6 +34,7 @@ const MicrosoftFrontEndDevelopment = ({ profile, uid }) => {
   });
 
   useLayoutEffect(() => {
+    setDataLoading(true);
     firebase
       .firestore()
       .collection("Microsoft Front End Development")
@@ -44,8 +46,10 @@ const MicrosoftFrontEndDevelopment = ({ profile, uid }) => {
         });
         if (data.length === 0) {
           setMsg("Lectures will be uploaded soon");
+          setDataLoading(false);
         } else if (data.length > 0) {
           setMsg("");
+          setDataLoading(false);
         }
         setLectures(data);
       });
@@ -133,6 +137,11 @@ const MicrosoftFrontEndDevelopment = ({ profile, uid }) => {
           width: isLaptop ? "100%" : "71vw",
         }}
       >
+        {dataloading && (
+          <div className="d-flex justify-content-center my-4">
+            <CircularProgress style={{ color: "#02a39b" }} />
+          </div>
+        )}
         {msg && <h1 className="fw-bold text-center">{msg + "..."}</h1>}
         <div className="d-flex flex-column flex-sm-row h-100">
           {!subTopic && (
@@ -212,7 +221,7 @@ const MicrosoftFrontEndDevelopment = ({ profile, uid }) => {
               )}
             </div>
           )}
-          {video && (
+          {video ? (
             <div className="video">
               <iframe
                 title={Math.random()}
@@ -272,6 +281,13 @@ const MicrosoftFrontEndDevelopment = ({ profile, uid }) => {
                 </>
               )}
             </div>
+          ) : (
+            <img
+              src="https://i.ibb.co/Sd0qZ7X/dplmslogo.png"
+              alt="DigiPAKISTAN"
+              width="400"
+              height="100"
+            />
           )}
         </div>
       </div>
