@@ -12,32 +12,34 @@ import Active from "../assets/icons/active.jpg";
 const Dashboard = ({ profile, uid }) => {
   // Object Destructuring
   const { push } = useHistory();
+
   const isLaptop = useMediaQuery({
     query: "(max-width: 992px)",
   });
 
-  // Checking LMS Status
-  if (!profile.lms) return <Redirect to="/info" />;
+  // Checking LMS Status & admin user
+  if (!profile.lms && !profile.admin) return <Redirect to="/info" />;
   // Checking user is logged in or not
   if (!uid) return <Redirect to="/" />;
 
   let activeCourses = [];
-
-  if (profile.course[0]) {
-    if (profile.course[0]["First Course Name"].status) {
-      activeCourses.push(profile.course[0]["First Course Name"]);
+  if (!profile.admin) {
+    if (profile.course[0]) {
+      if (profile.course[0]["First Course Name"].status) {
+        activeCourses.push(profile.course[0]["First Course Name"]);
+      }
     }
-  }
 
-  if (profile.course[1]) {
-    if (profile.course[1]["Second Course Name"].status) {
-      activeCourses.push(profile.course[0]["Second Course Name"]);
+    if (profile.course[1]) {
+      if (profile.course[1]["Second Course Name"].status) {
+        activeCourses.push(profile.course[0]["Second Course Name"]);
+      }
     }
-  }
 
-  if (profile.course[2]) {
-    if (profile.course[2]["Third Course Name"].status) {
-      activeCourses.push(profile.course[0]["Third Course Name"]);
+    if (profile.course[2]) {
+      if (profile.course[2]["Third Course Name"].status) {
+        activeCourses.push(profile.course[0]["Third Course Name"]);
+      }
     }
   }
 
@@ -48,7 +50,7 @@ const Dashboard = ({ profile, uid }) => {
     }, 300);
   };
 
-  return profile.fullName ? (
+  return profile.fullName || profile.name ? (
     <>
       <Nav />
       <div
@@ -85,8 +87,13 @@ const Dashboard = ({ profile, uid }) => {
                 <img src={Enrolled} alt="Enrolled Courses" height="250" />
                 <div>
                   <span className="fw-bold d-flex">
-                    Enrolled Course{profile.course.length > 1 ? "s" : null} (
-                    {profile.course.length})
+                    Enrolled Course
+                    {profile.admin
+                      ? null
+                      : profile.course.length > 1
+                      ? "s"
+                      : null}{" "}
+                    ({profile.admin ? 52 : profile.course.length})
                   </span>
                   <div className="d-flex flex-column align-items-start">
                     <p className="h6">Here are all courses list</p>
@@ -104,8 +111,13 @@ const Dashboard = ({ profile, uid }) => {
                 <div className="d-flex flex-column align-items-start">
                   <div className="d-flex">
                     <span className="fw-bold">
-                      Active Course{activeCourses.length > 1 ? "s" : null} (
-                      {activeCourses.length})
+                      Active Course
+                      {profile.admin
+                        ? null
+                        : activeCourses.length > 1
+                        ? "s"
+                        : null}{" "}
+                      ({profile.admin ? 52 : activeCourses.length})
                     </span>
                   </div>
                   <div className="d-flex flex-column align-items-start">

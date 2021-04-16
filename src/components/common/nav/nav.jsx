@@ -132,69 +132,73 @@ const Nav = ({ signOut, profile }) => {
             </IconButton>
             <h3 className="mb-0 fw-bold">LMS</h3>
 
-            <Button
-              aria-haspopup="true"
-              onClick={handleClickExplore}
-              variant="outlined"
-              color="inherit"
-              className="fw-bold ms-3"
-            >
-              Explore
-            </Button>
-            <Menu
-              id="simple-menu"
-              anchorEl={anchorElExplore}
-              keepMounted
-              open={Boolean(anchorElExplore)}
-              className="mt-5"
-              onClose={handleCloseExplore}
-            >
-              {profile.course[0] && (
-                <MenuItem
-                  className="w-100 d-block"
-                  onClick={() => {
-                    handleClose();
-                    push(
-                      profile.course[0]["First Course Name"].status
-                        ? profile.course[0]["First Course Name"].link
-                        : "/dashboard"
-                    );
-                  }}
+            {profile.admin ? null : (
+              <>
+                <Button
+                  aria-haspopup="true"
+                  onClick={handleClickExplore}
+                  variant="outlined"
+                  color="inherit"
+                  className="fw-bold ms-3"
                 >
-                  {profile.course[0]["First Course Name"].name}
-                </MenuItem>
-              )}
-              {profile.course[1] && (
-                <MenuItem
-                  className="w-100 d-block"
-                  onClick={() => {
-                    handleClose();
-                    push(
-                      profile.course[1]["Second Course Name"].status
-                        ? profile.course[1]["Second Course Name"].link
-                        : "/dashboard"
-                    );
-                  }}
+                  Explore
+                </Button>
+                <Menu
+                  id="simple-menu"
+                  anchorEl={anchorElExplore}
+                  keepMounted
+                  open={Boolean(anchorElExplore)}
+                  className="mt-5"
+                  onClose={handleCloseExplore}
                 >
-                  {profile.course[1]["Second Course Name"].name}
-                </MenuItem>
-              )}
-              {profile.course[2] && (
-                <MenuItem
-                  className="w-100 d-block"
-                  onClick={() => {
-                    handleClose();
-                    push(
-                      profile.course[2]["Third Course Name"].status
-                        ? profile.course[2]["Third Course Name"].link
-                        : "/dashboard"
-                    );
-                  }}
-                >
-                  {profile.course[2]["Third Course Name"].name}
-                </MenuItem>
-              )}
-            </Menu>
+                  {profile.course[0] && (
+                    <MenuItem
+                      className="w-100 d-block"
+                      onClick={() => {
+                        handleClose();
+                        push(
+                          profile.course[0]["First Course Name"].status
+                            ? profile.course[0]["First Course Name"].link
+                            : "/dashboard"
+                        );
+                      }}
+                    >
+                      {profile.course[0]["First Course Name"].name}
+                    </MenuItem>
+                  )}
+                  {profile.course[1] && (
+                    <MenuItem
+                      className="w-100 d-block"
+                      onClick={() => {
+                        handleClose();
+                        push(
+                          profile.course[1]["Second Course Name"].status
+                            ? profile.course[1]["Second Course Name"].link
+                            : "/dashboard"
+                        );
+                      }}
+                    >
+                      {profile.course[1]["Second Course Name"].name}
+                    </MenuItem>
+                  )}
+                  {profile.course[2] && (
+                    <MenuItem
+                      className="w-100 d-block"
+                      onClick={() => {
+                        handleClose();
+                        push(
+                          profile.course[2]["Third Course Name"].status
+                            ? profile.course[2]["Third Course Name"].link
+                            : "/dashboard"
+                        );
+                      }}
+                    >
+                      {profile.course[2]["Third Course Name"].name}
+                    </MenuItem>
+                  )}
+                </Menu>
+              </>
+            )}
           </div>
           <div className="d-flex" style={{ marginRight: open ? 300 : 0 }}>
             <IconButton
@@ -271,7 +275,9 @@ const Nav = ({ signOut, profile }) => {
               ) : (
                 <Avatar className="avatar">{profile.initials}</Avatar>
               )}
-              <p className="mb-0 ms-2">{profile.fullName}</p>
+              <p className="mb-0 ms-2 text-capitalize">
+                {profile.fullName || profile.name}
+              </p>
             </Button>
             <Menu
               id="simple-menu"
@@ -288,17 +294,19 @@ const Nav = ({ signOut, profile }) => {
                   go("/lectures");
                 }}
               >
-                My Courses
+                {profile.admin ? "All Courses" : "My Courses"}
               </MenuItem>
-              <MenuItem
-                className="profile-menu"
-                onClick={() => {
-                  handleClose();
-                  go("/profile");
-                }}
-              >
-                Profile
-              </MenuItem>
+              {profile.admin ? null : (
+                <MenuItem
+                  className="profile-menu"
+                  onClick={() => {
+                    handleClose();
+                    go("/profile");
+                  }}
+                >
+                  Profile
+                </MenuItem>
+              )}
               <MenuItem
                 onClick={() => {
                   go("/help");
@@ -337,12 +345,7 @@ const Nav = ({ signOut, profile }) => {
                 height="67"
               />
             </div>
-            {/* <div className="d-flex justify-content-end">
-            <IconButton onClick={handleDrawer} className="outline m-3">
-              <i className="fas fa-arrow-left"></i>
-            </IconButton>
-          </div>
-          <Divider /> */}
+
             <List>
               <ListItem
                 button
@@ -357,19 +360,21 @@ const Nav = ({ signOut, profile }) => {
                   <span className="fw-bold">Dashboard</span>
                 </ListItemText>
               </ListItem>
-              <ListItem
-                button
-                onClick={() => {
-                  go("/profile");
-                }}
-              >
-                <ListItemIcon>
-                  <i className="fas text-white fa-2x fa-users"></i>
-                </ListItemIcon>
-                <ListItemText>
-                  <span className="fw-bold">Profile</span>
-                </ListItemText>
-              </ListItem>
+              {profile.admin ? null : (
+                <ListItem
+                  button
+                  onClick={() => {
+                    go("/profile");
+                  }}
+                >
+                  <ListItemIcon>
+                    <i className="fas text-white fa-2x fa-users"></i>
+                  </ListItemIcon>
+                  <ListItemText>
+                    <span className="fw-bold">Profile</span>
+                  </ListItemText>
+                </ListItem>
+              )}
               <ListItem
                 button
                 onClick={() => {

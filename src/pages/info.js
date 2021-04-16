@@ -14,18 +14,13 @@ const Info = ({ profile, uid, signOut }) => {
   if (profile.lms) return <Redirect to="/dashboard" />;
   // Checking user is logged in or not
   if (!uid) return <Redirect to="/" />;
-
+  // Checking if the user is admin or not
+  // if () return <Redirect to="/dashboard" />;
+  console.log(profile);
   // Checking user is logged in or not
-  if (profile.admin)
-    return fbConfig
-      .auth()
-      .signOut()
-      .then(() => {
-        push("/");
-        window.location.reload();
-      });
+  if (profile.admin) return <Redirect to="/dashboard" />;
 
-  return profile.fullName ? (
+  return profile.fullName || profile.name ? (
     <div className="container my-5">
       <h1 className="text-center mx-3 display-4 fw-bold">
         We appreciate your interest but regret to inform that you are not

@@ -123,7 +123,7 @@ const IosAppsDevelopment = ({ profile, uid }) => {
   const stars = availableRatings.filter((val) => val.courseName === topic);
 
   // Checking LMS Status
-  if (!profile.lms) return <Redirect to="/info" />;
+  if (!profile.lms && !profile.admin) return <Redirect to="/info" />;
   // Checking user is logged in or not
   if (!uid) return <Redirect to="/" />;
   return profile && uid ? (
