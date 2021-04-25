@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from "react";
+import React from "react";
 import { Switch, Route } from "react-router-dom";
 import AmazonFBABusiness from "./components/lectures/amazonFBABusiness";
 
@@ -75,8 +75,6 @@ import SqlServerSpecialist from "./components/lectures/sqlServerSpecialist";
 import Uiux from "./components/lectures/uiux";
 import VideoEditing from "./components/lectures/videoEditing";
 import XamarinMobileAppsDevelopment from "./components/lectures/xamarinMobileAppsDevelopment";
-
-import Loader from "./loader/loader";
 import LogIn from "./pages/login";
 import Dashboard from "./pages/dashboard";
 import Info from "./pages/info";
@@ -109,6 +107,7 @@ import HelpCenter from "./pages/helpCenter";
 import ForgotPassword from "./pages/forgotPassword";
 import Announcements from "./pages/announcements";
 import Policy from "./pages/policy";
+import RegisterTeacher from "./pages/registerTeacher";
 
 const App = () => {
   return (
@@ -123,6 +122,7 @@ const App = () => {
       <Route path="/policy" component={Policy} />
       <Route path="/forgotPassword" component={ForgotPassword} />
       <Route path="/announcements" component={Announcements} />
+      <Route path="/registerTeacher" component={RegisterTeacher} />
       <Route
         path="/lmsDashboard/myCourses/frontEndLMS"
         exact

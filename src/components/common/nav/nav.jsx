@@ -223,14 +223,13 @@ const Nav = ({ signOut, profile }) => {
               {notifications.length > 0 ? (
                 <div>
                   {notifications.map((notification, ind) => {
+                    let time = Date(notification.createdAt.nanoseconds);
                     return (
-                      <div className="p-3">
+                      <div className="p-3" key={ind}>
                         <h6 className="fw-bold title mb-0">
                           {notification.name}
                         </h6>
-                        <p className="small mb-0">
-                          {moment().startOf(notification.createdAt).fromNow()}
-                        </p>
+                        <p className="small mb-0">{time}</p>
                       </div>
                     );
                   })}
@@ -372,6 +371,21 @@ const Nav = ({ signOut, profile }) => {
                   </ListItemIcon>
                   <ListItemText>
                     <span className="fw-bold">Profile</span>
+                  </ListItemText>
+                </ListItem>
+              )}
+              {profile.admin && (
+                <ListItem
+                  button
+                  onClick={() => {
+                    go("/registerTeacher");
+                  }}
+                >
+                  <ListItemIcon>
+                    <i className="fas fa-chalkboard-teacher text-white fa-2x"></i>
+                  </ListItemIcon>
+                  <ListItemText>
+                    <span className="fw-bold">Register Teacher</span>
                   </ListItemText>
                 </ListItem>
               )}
