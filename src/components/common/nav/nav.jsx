@@ -16,7 +16,6 @@ import MenuItem from "@material-ui/core/MenuItem";
 import { useMediaQuery } from "react-responsive";
 import { Badge, ListItemIcon } from "@material-ui/core";
 import firebase from "../../../config/fbConfig";
-import moment from "moment";
 
 const Nav = ({ signOut, profile }) => {
   // State
@@ -30,7 +29,9 @@ const Nav = ({ signOut, profile }) => {
   const [notifications, setNotifications] = useState([]);
 
   const onCloseDrawer = () => {
-    setOpen((prevState) => !prevState);
+    setTimeout(() => {
+      setOpen((prevState) => !prevState);
+    }, 400);
   };
 
   useLayoutEffect(() => {
