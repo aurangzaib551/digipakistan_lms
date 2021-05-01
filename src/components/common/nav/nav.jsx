@@ -27,6 +27,7 @@ const Nav = ({ signOut, profile }) => {
   const [anchorElExplore, setAnchorElExplore] = useState(null);
   const [no, setno] = useState(1);
   const [notifications, setNotifications] = useState([]);
+  const [announcements, setAnnouncements] = useState([]);
 
   const onCloseDrawer = () => {
     setTimeout(() => {
@@ -36,6 +37,7 @@ const Nav = ({ signOut, profile }) => {
 
   useLayoutEffect(() => {
     setLoading(true);
+
     firebase
       .firestore()
       .collection("Notifications")
@@ -45,6 +47,23 @@ const Nav = ({ signOut, profile }) => {
           if (doc.exists) {
             data.push(doc.data());
             setNotifications(data);
+            setLoading(false);
+          } else {
+            setLoading(false);
+          }
+        });
+      });
+
+    firebase
+      .database()
+      .ref("/Announcements")
+      .on("value", (snap) => {
+        let data = [];
+
+        snap.forEach((doc) => {
+          if (doc.exists) {
+            data.push(doc.val());
+            setAnnouncements(data);
             setLoading(false);
           } else {
             setLoading(false);
@@ -219,7 +238,9 @@ const Nav = ({ signOut, profile }) => {
               onClose={handleClose3}
             >
               <div className="p-3 pb-0">
-                <h6 className="fw-bold title mb-0">1 new announcement</h6>
+                <h6 className="fw-bold title mb-0">
+                  {announcements.length} new announcement
+                </h6>
               </div>
               {notifications.length > 0 ? (
                 <div>
