@@ -15,7 +15,6 @@ const Assignments = ({ profile, uid }) => {
   // Checking user is logged in or not
   if (!uid) return <Redirect to="/" />;
 
-  console.log(profile);
   return profile ? (
     <>
       <Nav />
@@ -1281,7 +1280,7 @@ const Assignments = ({ profile, uid }) => {
         {profile.course[0] && (
           <div>
             {profile.course[0]["First Course Name"].name ===
-              "Python for Everyone" && (
+              "Python For Everyone" && (
               <Button
                 href="https://drive.google.com/drive/folders/1eM0itZ11b9lBKlVvXRuEVvvKNidffIBX?usp=sharing"
                 target="_blank"
@@ -1297,7 +1296,7 @@ const Assignments = ({ profile, uid }) => {
         {profile.course[1] && (
           <div>
             {profile.course[1]["Second Course Name"].name ===
-              "Python for Everyone" && (
+              "Python For Everyone" && (
               <Button
                 href="https://drive.google.com/drive/folders/1eM0itZ11b9lBKlVvXRuEVvvKNidffIBX?usp=sharing"
                 target="_blank"
@@ -1313,7 +1312,7 @@ const Assignments = ({ profile, uid }) => {
         {profile.course[2] && (
           <div>
             {profile.course[2]["Third Course Name"].name ===
-              "Python for Everyone" && (
+              "Python For Everyone" && (
               <Button
                 href="https://drive.google.com/drive/folders/1eM0itZ11b9lBKlVvXRuEVvvKNidffIBX?usp=sharing"
                 target="_blank"
