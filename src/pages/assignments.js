@@ -2472,7 +2472,7 @@ const Assignments = ({ profile, uid }) => {
         {profile.course[0] && (
           <div>
             {profile.course[0]["First Course Name"].name ===
-              "Full Stack Web Development (MCSA)" && (
+              "Full Stack Web Development" && (
               <Button
                 href="https://drive.google.com/drive/folders/10a06f-0BgI0BV6IDqr9JlxqpSaPp6Lji?usp=sharing"
                 target="_blank"
@@ -2488,7 +2488,7 @@ const Assignments = ({ profile, uid }) => {
         {profile.course[1] && (
           <div>
             {profile.course[1]["Second Course Name"].name ===
-              "Full Stack Web Development (MCSA)" && (
+              "Full Stack Web Development" && (
               <Button
                 href="https://drive.google.com/drive/folders/10a06f-0BgI0BV6IDqr9JlxqpSaPp6Lji?usp=sharing"
                 target="_blank"
@@ -2504,7 +2504,7 @@ const Assignments = ({ profile, uid }) => {
         {profile.course[2] && (
           <div>
             {profile.course[2]["Third Course Name"].name ===
-              "Full Stack Web Development (MCSA)" && (
+              "Full Stack Web Development" && (
               <Button
                 href="https://drive.google.com/drive/folders/10a06f-0BgI0BV6IDqr9JlxqpSaPp6Lji?usp=sharing"
                 target="_blank"
