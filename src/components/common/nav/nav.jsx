@@ -16,6 +16,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import { useMediaQuery } from "react-responsive";
 import { Badge, ListItemIcon } from "@material-ui/core";
 import firebase from "../../../config/fbConfig";
+import $ from "jquery";
 
 const Nav = ({ signOut, profile }) => {
   // State
@@ -246,50 +247,67 @@ const Nav = ({ signOut, profile }) => {
                 <div>
                   {notifications.map((notification, ind) => {
                     let time = Date(notification.createdAt.nanoseconds);
+                    // $(document).ready(() => {
+                    //   $(".desc-l1").html(notification.name);
+                    // });
                     return profile.admin ? null : (
-                      <div className="p-3" key={ind}>
+                      <React.Fragment>
                         {profile.course[0] && (
-                          <div>
+                          <React.Fragment>
                             {profile.course[0]["First Course Name"].name ===
                               notification.course && (
                               <>
-                                <h6 className="fw-bold title mb-0">
-                                  {notification.name}
-                                </h6>
-                                <p className="small mb-0">{time}</p>
+                                <div className="p-3" key={ind}>
+                                  <h6
+                                    dangerouslySetInnerHTML={{
+                                      __html: notification.name,
+                                    }}
+                                    className="fw-bold title mb-0"
+                                  ></h6>
+                                  <p className="small mb-0">{time}</p>
+                                </div>
                               </>
                             )}
-                          </div>
+                          </React.Fragment>
                         )}
 
                         {profile.course[1] && (
-                          <div>
-                            {profile.course[1]["Second Course Name"].name ===
-                              notification.course && (
+                          <React.Fragment>
+                            {true && (
                               <>
-                                <h6 className="fw-bold title mb-0">
-                                  {notification.name}
-                                </h6>
-                                <p className="small mb-0">{time}</p>
+                                <div className="p-3" key={ind}>
+                                  <h6
+                                    dangerouslySetInnerHTML={{
+                                      __html: notification.name,
+                                    }}
+                                    className="fw-bold title mb-0"
+                                  ></h6>
+                                  <p className="small mb-0">{time}</p>
+                                </div>
                               </>
                             )}
-                          </div>
+                          </React.Fragment>
                         )}
 
                         {profile.course[2] && (
-                          <div>
+                          <React.Fragment>
                             {profile.course[2]["Third Course Name"].name ===
                               notification.course && (
                               <>
-                                <h6 className="fw-bold title mb-0">
-                                  {notification.name}
-                                </h6>
-                                <p className="small mb-0">{time}</p>
+                                <div className="p-3" key={ind}>
+                                  <h6
+                                    dangerouslySetInnerHTML={{
+                                      __html: notification.name,
+                                    }}
+                                    className="fw-bold title mb-0"
+                                  ></h6>
+                                  <p className="small mb-0">{time}</p>
+                                </div>
                               </>
                             )}
-                          </div>
+                          </React.Fragment>
                         )}
-                      </div>
+                      </React.Fragment>
                     );
                   })}
                 </div>
