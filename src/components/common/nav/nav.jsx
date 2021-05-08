@@ -273,7 +273,8 @@ const Nav = ({ signOut, profile }) => {
 
                         {profile.course[1] && (
                           <React.Fragment>
-                            {true && (
+                            {profile.course[1]["Second Course Name"].name ===
+                              notification.course && (
                               <>
                                 <div className="p-3" key={ind}>
                                   <h6
