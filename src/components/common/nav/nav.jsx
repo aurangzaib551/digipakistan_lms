@@ -246,12 +246,49 @@ const Nav = ({ signOut, profile }) => {
                 <div>
                   {notifications.map((notification, ind) => {
                     let time = Date(notification.createdAt.nanoseconds);
-                    return (
+                    return profile.admin ? null : (
                       <div className="p-3" key={ind}>
-                        <h6 className="fw-bold title mb-0">
-                          {notification.name}
-                        </h6>
-                        <p className="small mb-0">{time}</p>
+                        {profile.course[0] && (
+                          <div>
+                            {profile.course[0]["First Course Name"].name ===
+                              notification.course && (
+                              <>
+                                <h6 className="fw-bold title mb-0">
+                                  {notification.name}
+                                </h6>
+                                <p className="small mb-0">{time}</p>
+                              </>
+                            )}
+                          </div>
+                        )}
+
+                        {profile.course[1] && (
+                          <div>
+                            {profile.course[1]["Second Course Name"].name ===
+                              notification.course && (
+                              <>
+                                <h6 className="fw-bold title mb-0">
+                                  {notification.name}
+                                </h6>
+                                <p className="small mb-0">{time}</p>
+                              </>
+                            )}
+                          </div>
+                        )}
+
+                        {profile.course[2] && (
+                          <div>
+                            {profile.course[2]["Third Course Name"].name ===
+                              notification.course && (
+                              <>
+                                <h6 className="fw-bold title mb-0">
+                                  {notification.name}
+                                </h6>
+                                <p className="small mb-0">{time}</p>
+                              </>
+                            )}
+                          </div>
+                        )}
                       </div>
                     );
                   })}

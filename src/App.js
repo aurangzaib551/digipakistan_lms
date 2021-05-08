@@ -350,7 +350,7 @@ const App = () => {
         component={DigitalMarketing}
       />
       <Route
-        path=" /lmsDashboard/myCourses/uiUXDesignLMS"
+        path="/lmsDashboard/myCourses/uiUXDesignLMS"
         exact
         component={Uiux}
       />

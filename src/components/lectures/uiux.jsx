@@ -126,6 +126,8 @@ const UIUX = ({ profile, uid }) => {
   if (!profile.lms && !profile.admin) return <Redirect to="/info" />;
   // Checking user is logged in or not
   if (!uid) return <Redirect to="/" />;
+
+  console.log(profile);
   return profile && uid ? (
     <>
       <Nav />
