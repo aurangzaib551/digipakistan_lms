@@ -247,26 +247,26 @@ const Nav = ({ signOut, profile }) => {
                 <div>
                   {notifications.map((notification, ind) => {
                     let time = Date(notification.createdAt.nanoseconds);
-                    // $(document).ready(() => {
-                    //   $(".desc-l1").html(notification.name);
-                    // });
                     return profile.admin ? null : (
                       <React.Fragment>
                         {profile.course[0] && (
                           <React.Fragment>
                             {profile.course[0]["First Course Name"].name ===
                               notification.course && (
-                              <>
-                                <div className="p-3" key={ind}>
-                                  <h6
-                                    dangerouslySetInnerHTML={{
-                                      __html: notification.name,
-                                    }}
-                                    className="fw-bold title mb-0"
-                                  ></h6>
-                                  <p className="small mb-0">{time}</p>
-                                </div>
-                              </>
+                              <React.Fragment>
+                                {profile.course[0]["First Course Name"]
+                                  .status && (
+                                  <div className="p-3" key={ind}>
+                                    <h6
+                                      dangerouslySetInnerHTML={{
+                                        __html: notification.name,
+                                      }}
+                                      className="fw-bold title mb-0"
+                                    ></h6>
+                                    <p className="small mb-0">{time}</p>
+                                  </div>
+                                )}
+                              </React.Fragment>
                             )}
                           </React.Fragment>
                         )}
@@ -275,17 +275,20 @@ const Nav = ({ signOut, profile }) => {
                           <React.Fragment>
                             {profile.course[1]["Second Course Name"].name ===
                               notification.course && (
-                              <>
-                                <div className="p-3" key={ind}>
-                                  <h6
-                                    dangerouslySetInnerHTML={{
-                                      __html: notification.name,
-                                    }}
-                                    className="fw-bold title mb-0"
-                                  ></h6>
-                                  <p className="small mb-0">{time}</p>
-                                </div>
-                              </>
+                              <React.Fragment>
+                                {profile.course[1]["Second Course Name"]
+                                  .status && (
+                                  <div className="p-3" key={ind}>
+                                    <h6
+                                      dangerouslySetInnerHTML={{
+                                        __html: notification.name,
+                                      }}
+                                      className="fw-bold title mb-0"
+                                    ></h6>
+                                    <p className="small mb-0">{time}</p>
+                                  </div>
+                                )}
+                              </React.Fragment>
                             )}
                           </React.Fragment>
                         )}
@@ -294,17 +297,20 @@ const Nav = ({ signOut, profile }) => {
                           <React.Fragment>
                             {profile.course[2]["Third Course Name"].name ===
                               notification.course && (
-                              <>
-                                <div className="p-3" key={ind}>
-                                  <h6
-                                    dangerouslySetInnerHTML={{
-                                      __html: notification.name,
-                                    }}
-                                    className="fw-bold title mb-0"
-                                  ></h6>
-                                  <p className="small mb-0">{time}</p>
-                                </div>
-                              </>
+                              <React.Fragment>
+                                {profile.course[2]["Third Course Name"]
+                                  .status && (
+                                  <div className="p-3" key={ind}>
+                                    <h6
+                                      dangerouslySetInnerHTML={{
+                                        __html: notification.name,
+                                      }}
+                                      className="fw-bold title mb-0"
+                                    ></h6>
+                                    <p className="small mb-0">{time}</p>
+                                  </div>
+                                )}
+                              </React.Fragment>
                             )}
                           </React.Fragment>
                         )}
