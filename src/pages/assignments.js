@@ -1,15 +1,59 @@
-import React from "react";
+import React, { useLayoutEffect, useState } from "react";
 import { connect } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 import Loader from "../loader/loader";
 import Nav from "../components/common/nav/nav";
 import { useMediaQuery } from "react-responsive";
 import Button from "@material-ui/core/Button";
+import firebase from "../config/fbConfig";
 
 const Assignments = ({ profile, uid }) => {
+  const [data, setData] = useState([]);
+
   const isLaptop = useMediaQuery({
     query: "(max-width: 992px)",
   });
+
+  const { push } = useHistory();
+
+  useLayoutEffect(() => {
+    firebase
+      .firestore()
+      .collection("Assignment Link")
+      .get()
+      .then((doc) => {
+        const data1 = [];
+
+        doc.forEach((data) => {
+          if (
+            data.data().course === profile.course[0]["First Course Name"].name
+          ) {
+            if (profile.course[0]["First Course Name"].status) {
+              data1.push(data.data());
+            }
+          }
+
+          if (
+            data.data().course === profile.course[1]["Second Course Name"].name
+          ) {
+            if (profile.course[1]["Second Course Name"].status) {
+              data1.push(data.data());
+            }
+          }
+
+          if (
+            data.data().course === profile.course[2]["Third Course Name"].name
+          ) {
+            if (profile.course[2]["Third Course Name"].status) {
+              data1.push(data.data());
+            }
+          }
+
+          setData(data1);
+        });
+      });
+  }, []);
+
   // Checking LMS Status
   if (!profile.lms && !profile.admin) return <Redirect to="/info" />;
   // Checking user is logged in or not
@@ -226,46 +270,49 @@ const Assignments = ({ profile, uid }) => {
 
         {profile.course[0] && (
           <div>
-            {profile.course[0]["First Course Name"].name === "MERN Stack" && (
-              <Button
-                href="https://drive.google.com/drive/folders/1tIKo0qJkMKjB7-U73VHQrj4VidCcrmC-?usp=sharing"
-                target="_blank"
-                variant="contained"
-                className="custom-button mt-3"
-              >
-                Download MERN Stack
-              </Button>
-            )}
+            {profile.course[0]["First Course Name"].name === "MERN Stack" &&
+              profile.course[0]["First Course Name"].status && (
+                <Button
+                  href="https://drive.google.com/drive/folders/1tIKo0qJkMKjB7-U73VHQrj4VidCcrmC-?usp=sharing"
+                  target="_blank"
+                  variant="contained"
+                  className="custom-button mt-3"
+                >
+                  Download MERN Stack
+                </Button>
+              )}
           </div>
         )}
 
         {profile.course[1] && (
           <div>
-            {profile.course[1]["Second Course Name"].name === "MERN Stack" && (
-              <Button
-                href="https://drive.google.com/drive/folders/1tIKo0qJkMKjB7-U73VHQrj4VidCcrmC-?usp=sharing"
-                target="_blank"
-                variant="contained"
-                className="custom-button mt-3"
-              >
-                Download MERN Stack
-              </Button>
-            )}
+            {profile.course[1]["Second Course Name"].name === "MERN Stack" &&
+              profile.course[1]["Second Course Name"].status && (
+                <Button
+                  href="https://drive.google.com/drive/folders/1tIKo0qJkMKjB7-U73VHQrj4VidCcrmC-?usp=sharing"
+                  target="_blank"
+                  variant="contained"
+                  className="custom-button mt-3"
+                >
+                  Download MERN Stack
+                </Button>
+              )}
           </div>
         )}
 
         {profile.course[2] && (
           <div>
-            {profile.course[2]["Third Course Name"].name === "MERN Stack" && (
-              <Button
-                href="https://drive.google.com/drive/folders/1tIKo0qJkMKjB7-U73VHQrj4VidCcrmC-?usp=sharing"
-                target="_blank"
-                variant="contained"
-                className="custom-button mt-3"
-              >
-                Download MERN Stack
-              </Button>
-            )}
+            {profile.course[2]["Third Course Name"].name === "MERN Stack" &&
+              profile.course[2]["Third Course Name"].status && (
+                <Button
+                  href="https://drive.google.com/drive/folders/1tIKo0qJkMKjB7-U73VHQrj4VidCcrmC-?usp=sharing"
+                  target="_blank"
+                  variant="contained"
+                  className="custom-button mt-3"
+                >
+                  Download MERN Stack
+                </Button>
+              )}
           </div>
         )}
 
@@ -1755,48 +1802,51 @@ const Assignments = ({ profile, uid }) => {
         {profile.course[0] && (
           <div>
             {profile.course[0]["First Course Name"].name ===
-              "Graphic Design" && (
-              <Button
-                href="https://drive.google.com/drive/folders/10Z9Xl3ZE60NB20lOaGF3M4oSXZIeE28f?usp=sharing"
-                target="_blank"
-                variant="contained"
-                className="custom-button mt-3"
-              >
-                Download Graphic Design
-              </Button>
-            )}
+              "Graphics Design" &&
+              profile.course[0]["First Course Name"].status && (
+                <Button
+                  href="https://drive.google.com/drive/folders/10Z9Xl3ZE60NB20lOaGF3M4oSXZIeE28f?usp=sharing"
+                  target="_blank"
+                  variant="contained"
+                  className="custom-button mt-3"
+                >
+                  Download Graphic Design
+                </Button>
+              )}
           </div>
         )}
 
         {profile.course[1] && (
           <div>
             {profile.course[1]["Second Course Name"].name ===
-              "Graphic Design" && (
-              <Button
-                href="https://drive.google.com/drive/folders/10Z9Xl3ZE60NB20lOaGF3M4oSXZIeE28f?usp=sharing"
-                target="_blank"
-                variant="contained"
-                className="custom-button mt-3"
-              >
-                Download Graphic Design
-              </Button>
-            )}
+              "Graphics Design" &&
+              profile.course[1]["Second Course Name"].status && (
+                <Button
+                  href="https://drive.google.com/drive/folders/10Z9Xl3ZE60NB20lOaGF3M4oSXZIeE28f?usp=sharing"
+                  target="_blank"
+                  variant="contained"
+                  className="custom-button mt-3"
+                >
+                  Download Graphic Design
+                </Button>
+              )}
           </div>
         )}
 
         {profile.course[2] && (
           <div>
             {profile.course[2]["Third Course Name"].name ===
-              "Graphic Design" && (
-              <Button
-                href="https://drive.google.com/drive/folders/10Z9Xl3ZE60NB20lOaGF3M4oSXZIeE28f?usp=sharing"
-                target="_blank"
-                variant="contained"
-                className="custom-button mt-3"
-              >
-                Download Graphic Design
-              </Button>
-            )}
+              "Graphics Design" &&
+              profile.course[2]["Third Course Name"].status && (
+                <Button
+                  href="https://drive.google.com/drive/folders/10Z9Xl3ZE60NB20lOaGF3M4oSXZIeE28f?usp=sharing"
+                  target="_blank"
+                  variant="contained"
+                  className="custom-button mt-3"
+                >
+                  Download Graphic Design
+                </Button>
+              )}
           </div>
         )}
 
@@ -2474,7 +2524,7 @@ const Assignments = ({ profile, uid }) => {
             {profile.course[0]["First Course Name"].name ===
               "Full Stack Web Development" && (
               <Button
-                href="https://drive.google.com/drive/folders/10a06f-0BgI0BV6IDqr9JlxqpSaPp6Lji?usp=sharing"
+                href="https://drive.google.com/drive/folders/1-a82dp0BFE6WDzpW5RlmDV2Lm02r8RD4?usp=sharing"
                 target="_blank"
                 variant="contained"
                 className="custom-button mt-3"
@@ -2490,7 +2540,7 @@ const Assignments = ({ profile, uid }) => {
             {profile.course[1]["Second Course Name"].name ===
               "Full Stack Web Development" && (
               <Button
-                href="https://drive.google.com/drive/folders/10a06f-0BgI0BV6IDqr9JlxqpSaPp6Lji?usp=sharing"
+                href="https://drive.google.com/drive/folders/1-a82dp0BFE6WDzpW5RlmDV2Lm02r8RD4?usp=sharing"
                 target="_blank"
                 variant="contained"
                 className="custom-button mt-3"
@@ -2506,7 +2556,7 @@ const Assignments = ({ profile, uid }) => {
             {profile.course[2]["Third Course Name"].name ===
               "Full Stack Web Development" && (
               <Button
-                href="https://drive.google.com/drive/folders/10a06f-0BgI0BV6IDqr9JlxqpSaPp6Lji?usp=sharing"
+                href="https://drive.google.com/drive/folders/1-a82dp0BFE6WDzpW5RlmDV2Lm02r8RD4?usp=sharing"
                 target="_blank"
                 variant="contained"
                 className="custom-button mt-3"
@@ -2515,6 +2565,31 @@ const Assignments = ({ profile, uid }) => {
               </Button>
             )}
           </div>
+        )}
+
+        <h1 className="mt-3 fw-bold">Upload Assignment</h1>
+
+        {data.length ? (
+          <Button
+            onClick={() =>
+              push(
+                `/uploadAssignment?firstName=${
+                  data[0] ? data[0].course : ""
+                }&firstLink=${data[0] ? data[0].link : ""}&secondName=${
+                  data[1] ? data[1].course : ""
+                }&secondLink=${data[1] ? data[1].link : ""}&thirdName=${
+                  data[2] ? data[2].course : ""
+                }&thirdLink=${data[2] ? data[2].link : ""}`
+              )
+            }
+            target="_blank"
+            variant="contained"
+            className="custom-button mt-3"
+          >
+            Upload Assignment
+          </Button>
+        ) : (
+          ""
         )}
       </div>
     </>

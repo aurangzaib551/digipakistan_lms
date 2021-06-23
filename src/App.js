@@ -108,6 +108,7 @@ import ForgotPassword from "./pages/forgotPassword";
 import Announcements from "./pages/announcements";
 import Policy from "./pages/policy";
 import RegisterTeacher from "./pages/registerTeacher";
+import uploadAssignment from "./pages/uploadAssignment";
 
 const App = () => {
   return (
@@ -389,6 +390,7 @@ const App = () => {
         component={certifiedInformationSecurityManager}
       />
       <Route path="/lectures" component={Lectures} />
+      <Route path="/uploadAssignment" component={uploadAssignment} />
     </Switch>
   );
 };

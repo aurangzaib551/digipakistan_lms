@@ -1,21 +1,38 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 import Loader from "../loader/loader";
 import Nav from "../components/common/nav/nav";
 import Paper from "@material-ui/core/Paper";
 import { useMediaQuery } from "react-responsive";
 import firebase from "../config/fbConfig";
+import { Button } from "@material-ui/core";
 
 const Announcements = ({ profile, uid }) => {
   const [announcements, setAnnouncements] = React.useState([]);
   const [loading, setLoading] = React.useState(false);
+  const [notifications, setNotifications] = React.useState([]);
 
   const isLaptop = useMediaQuery({
     query: "(max-width: 992px)",
   });
 
+  const { push } = useHistory();
+
   useEffect(() => {
+    firebase
+      .firestore()
+      .collection("Notifications")
+      .onSnapshot((snap) => {
+        let data1 = [];
+        snap.forEach((doc) => {
+          if (doc.exists) {
+            data1.push(doc.data());
+            setNotifications(data1);
+          }
+        });
+      });
+
     firebase
       .database()
       .ref("/Announcements")
@@ -34,7 +51,7 @@ const Announcements = ({ profile, uid }) => {
   if (!profile.lms && !profile.admin) return <Redirect to="/info" />;
   // Checking user is logged in or not
   if (!uid) return <Redirect to="/" />;
-  console.log(announcements);
+
   return profile ? (
     <>
       <Nav />
@@ -58,6 +75,93 @@ const Announcements = ({ profile, uid }) => {
             width: isLaptop ? "100%" : "50vw",
           }}
         >
+          <div className="pt-4 d-flex justify-content-center">
+            <Button
+              onClick={() => push("/announcements")}
+              variant="contained"
+              className="custom-button"
+            >
+              Load Data
+            </Button>
+          </div>
+
+          {notifications.length > 0 ? (
+            <div>
+              {notifications.map((notification, ind) => {
+                let time = Date(notification.createdAt.nanoseconds);
+                return profile.admin ? null : (
+                  <React.Fragment>
+                    {profile.course[0] && (
+                      <React.Fragment>
+                        {profile.course[0]["First Course Name"].name ===
+                          notification.course && (
+                          <React.Fragment>
+                            {profile.course[0]["First Course Name"].status && (
+                              <div className="p-3" key={ind}>
+                                <h6
+                                  dangerouslySetInnerHTML={{
+                                    __html: notification.name,
+                                  }}
+                                  className="fw-bold title mb-0"
+                                ></h6>
+                                <p className="small mb-0">{time}</p>
+                              </div>
+                            )}
+                          </React.Fragment>
+                        )}
+                      </React.Fragment>
+                    )}
+
+                    {profile.course[1] && (
+                      <React.Fragment>
+                        {profile.course[1]["Second Course Name"].name ===
+                          notification.course && (
+                          <React.Fragment>
+                            {profile.course[1]["Second Course Name"].status && (
+                              <div className="p-3" key={ind}>
+                                <h6
+                                  dangerouslySetInnerHTML={{
+                                    __html: notification.name,
+                                  }}
+                                  className="fw-bold title mb-0"
+                                ></h6>
+                                <p className="small mb-0">{time}</p>
+                              </div>
+                            )}
+                          </React.Fragment>
+                        )}
+                      </React.Fragment>
+                    )}
+
+                    {profile.course[2] && (
+                      <React.Fragment>
+                        {profile.course[2]["Third Course Name"].name ===
+                          notification.course && (
+                          <React.Fragment>
+                            {profile.course[2]["Third Course Name"].status && (
+                              <div className="p-3" key={ind}>
+                                <h6
+                                  dangerouslySetInnerHTML={{
+                                    __html: notification.name,
+                                  }}
+                                  className="fw-bold title mb-0"
+                                ></h6>
+                                <p className="small mb-0">{time}</p>
+                              </div>
+                            )}
+                          </React.Fragment>
+                        )}
+                      </React.Fragment>
+                    )}
+                  </React.Fragment>
+                );
+              })}
+            </div>
+          ) : (
+            <div className="p-3">
+              <h6 className="fw-bold mb-0">0 Notifications</h6>
+            </div>
+          )}
           <div className="py-3">
             {announcements.map((val, ind) => {
               return (
