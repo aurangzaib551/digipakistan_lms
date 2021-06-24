@@ -108,7 +108,8 @@ import ForgotPassword from "./pages/forgotPassword";
 import Announcements from "./pages/announcements";
 import Policy from "./pages/policy";
 import RegisterTeacher from "./pages/registerTeacher";
-import uploadAssignment from "./pages/uploadAssignment";
+import UploadAssignment from "./pages/uploadAssignment";
+import LearningMaterials from "./pages/learningMaterials";
 
 const App = () => {
   return (
@@ -390,7 +391,8 @@ const App = () => {
         component={certifiedInformationSecurityManager}
       />
       <Route path="/lectures" component={Lectures} />
-      <Route path="/uploadAssignment" component={uploadAssignment} />
+      <Route path="/uploadAssignment" component={UploadAssignment} />
+      <Route path="/learningMaterials" component={LearningMaterials} />
     </Switch>
   );
 };

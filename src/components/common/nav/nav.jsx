@@ -514,6 +514,19 @@ const Nav = ({ signOut, profile }) => {
               <ListItem
                 button
                 onClick={() => {
+                  go("/learningMaterials");
+                }}
+              >
+                <ListItemIcon>
+                  <i className="fas fa-book text-white fa-2x"></i>
+                </ListItemIcon>
+                <ListItemText>
+                  <span className="fw-bold">Learning Materials</span>
+                </ListItemText>
+              </ListItem>
+              <ListItem
+                button
+                onClick={() => {
                   go("/help");
                 }}
               >
