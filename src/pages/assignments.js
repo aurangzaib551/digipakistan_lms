@@ -9,6 +9,7 @@ import firebase from "../config/fbConfig";
 
 const Assignments = ({ profile, uid }) => {
   const [data, setData] = useState([]);
+  const [status, setStatus] = useState(false);
 
   const isLaptop = useMediaQuery({
     query: "(max-width: 992px)",
@@ -30,6 +31,7 @@ const Assignments = ({ profile, uid }) => {
           ) {
             if (profile.course[0]["First Course Name"].status) {
               data1.push(data.data());
+              setStatus(true);
             }
           }
 
@@ -38,6 +40,7 @@ const Assignments = ({ profile, uid }) => {
           ) {
             if (profile.course[1]["Second Course Name"].status) {
               data1.push(data.data());
+              setStatus(true);
             }
           }
 
@@ -46,6 +49,7 @@ const Assignments = ({ profile, uid }) => {
           ) {
             if (profile.course[2]["Third Course Name"].status) {
               data1.push(data.data());
+              setStatus(true);
             }
           }
 
@@ -2569,7 +2573,9 @@ const Assignments = ({ profile, uid }) => {
 
         <h1 className="mt-3 fw-bold">Upload Assignment</h1>
 
-        {data.length ? (
+        {console.log(data)}
+
+        {status ? (
           <Button
             onClick={() =>
               push(
